@@ -1,6 +1,6 @@
 //
-//  TrusButCheckUITests.swift
-//  TrusButCheckUITests
+//  TrustButCheckUITests.swift
+//  TrustButCheckUITests
 //
 //  Created by Maria Soboleva on 11/16/18.
 //  Copyright © 2018 Jesse Flores. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class TrusButCheckUITests: XCTestCase {
+class TrustButCheckUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

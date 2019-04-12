@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */; };
-		163156D5219EC7CA00ADCAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163156D4219EC7CA00ADCAC4 /* ViewController.swift */; };
 		163156D8219EC7CA00ADCAC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 163156D6219EC7CA00ADCAC4 /* Main.storyboard */; };
-		163156DB219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 163156D9219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodeld */; };
+		163156DB219EC7CA00ADCAC4 /* TrustButCheck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 163156D9219EC7CA00ADCAC4 /* TrustButCheck.xcdatamodeld */; };
 		163156DD219EC7CE00ADCAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 163156DC219EC7CE00ADCAC4 /* Assets.xcassets */; };
 		163156E0219EC7CE00ADCAC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 163156DE219EC7CE00ADCAC4 /* LaunchScreen.storyboard */; };
 		163156EB219EC7CE00ADCAC4 /* TrusButCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163156EA219EC7CE00ADCAC4 /* TrusButCheckTests.swift */; };
 		163156F6219EC7CE00ADCAC4 /* TrusButCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163156F5219EC7CE00ADCAC4 /* TrusButCheckUITests.swift */; };
+		16315706219ECC5F00ADCAC4 /* ItemsListHeaderTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16315705219ECC5F00ADCAC4 /* ItemsListHeaderTableView.xib */; };
+		1631570A219ECDF200ADCAC4 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315709219ECDF200ADCAC4 /* AddItemViewController.swift */; };
+		1631570C219ECE1500ADCAC4 /* ItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631570B219ECE1500ADCAC4 /* ItemListTableViewController.swift */; };
+		16315713219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315711219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift */; };
+		16315718219EF50400ADCAC4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315717219EF50400ADCAC4 /* CoreDataManager.swift */; };
+		1631571E219F19D800ADCAC4 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631571D219F19D800ADCAC4 /* ItemTableViewCell.swift */; };
+		16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */; };
+		16315729219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */; };
+		1631572B219F279F00ADCAC4 /* ItemsListHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631572A219F279F00ADCAC4 /* ItemsListHeaderTableView.swift */; };
+		1682DE1222613830008B5100 /* ItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682DE1122613830008B5100 /* ItemTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +44,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		163156CF219EC7CA00ADCAC4 /* TrusButCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrusButCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		163156CF219EC7CA00ADCAC4 /* TrustButCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrustButCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		163156D4219EC7CA00ADCAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		163156D7219EC7CA00ADCAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		163156DA219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrusButCheck.xcdatamodel; sourceTree = "<group>"; };
 		163156DC219EC7CE00ADCAC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		163156DF219EC7CE00ADCAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		163156E1219EC7CE00ADCAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		163156E6219EC7CE00ADCAC4 /* TrusButCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrusButCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		163156E6219EC7CE00ADCAC4 /* TrustButCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustButCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		163156EA219EC7CE00ADCAC4 /* TrusButCheckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrusButCheckTests.swift; sourceTree = "<group>"; };
 		163156EC219EC7CE00ADCAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		163156F1219EC7CE00ADCAC4 /* TrusButCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrusButCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		163156F1219EC7CE00ADCAC4 /* TrustButCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustButCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		163156F5219EC7CE00ADCAC4 /* TrusButCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrusButCheckUITests.swift; sourceTree = "<group>"; };
 		163156F7219EC7CE00ADCAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16315705219ECC5F00ADCAC4 /* ItemsListHeaderTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsListHeaderTableView.xib; sourceTree = "<group>"; };
+		16315709219ECDF200ADCAC4 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		1631570B219ECE1500ADCAC4 /* ItemListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewController.swift; sourceTree = "<group>"; };
+		16315711219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedItems+CoreDataClass.swift"; sourceTree = "<group>"; };
+		16315717219EF50400ADCAC4 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1631571D219F19D800ADCAC4 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1631572A219F279F00ADCAC4 /* ItemsListHeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListHeaderTableView.swift; sourceTree = "<group>"; };
+		1682DE1122613830008B5100 /* ItemTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +97,9 @@
 		163156C6219EC7CA00ADCAC4 = {
 			isa = PBXGroup;
 			children = (
-				163156D1219EC7CA00ADCAC4 /* TrusButCheck */,
-				163156E9219EC7CE00ADCAC4 /* TrusButCheckTests */,
-				163156F4219EC7CE00ADCAC4 /* TrusButCheckUITests */,
+				163156D1219EC7CA00ADCAC4 /* TrustButCheck */,
+				163156E9219EC7CE00ADCAC4 /* TrustButCheckTests */,
+				163156F4219EC7CE00ADCAC4 /* TrustButCheckUITests */,
 				163156D0219EC7CA00ADCAC4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,51 +107,108 @@
 		163156D0219EC7CA00ADCAC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				163156CF219EC7CA00ADCAC4 /* TrusButCheck.app */,
-				163156E6219EC7CE00ADCAC4 /* TrusButCheckTests.xctest */,
-				163156F1219EC7CE00ADCAC4 /* TrusButCheckUITests.xctest */,
+				163156CF219EC7CA00ADCAC4 /* TrustButCheck.app */,
+				163156E6219EC7CE00ADCAC4 /* TrustButCheckTests.xctest */,
+				163156F1219EC7CE00ADCAC4 /* TrustButCheckUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		163156D1219EC7CA00ADCAC4 /* TrusButCheck */ = {
+		163156D1219EC7CA00ADCAC4 /* TrustButCheck */ = {
 			isa = PBXGroup;
 			children = (
+				1682DE1322613836008B5100 /* Controls */,
+				1631571F219F1DAA00ADCAC4 /* Extentions */,
 				163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */,
-				163156D4219EC7CA00ADCAC4 /* ViewController.swift */,
-				163156D6219EC7CA00ADCAC4 /* Main.storyboard */,
-				163156DC219EC7CE00ADCAC4 /* Assets.xcassets */,
-				163156DE219EC7CE00ADCAC4 /* LaunchScreen.storyboard */,
 				163156E1219EC7CE00ADCAC4 /* Info.plist */,
-				163156D9219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodeld */,
+				16315710219ED67000ADCAC4 /* Model */,
+				1631570D219ED4D500ADCAC4 /* Views */,
+				163156D6219EC7CA00ADCAC4 /* Main.storyboard */,
 			);
-			path = TrusButCheck;
+			path = TrustButCheck;
 			sourceTree = "<group>";
 		};
-		163156E9219EC7CE00ADCAC4 /* TrusButCheckTests */ = {
+		163156E9219EC7CE00ADCAC4 /* TrustButCheckTests */ = {
 			isa = PBXGroup;
 			children = (
 				163156EA219EC7CE00ADCAC4 /* TrusButCheckTests.swift */,
 				163156EC219EC7CE00ADCAC4 /* Info.plist */,
 			);
-			path = TrusButCheckTests;
+			path = TrustButCheckTests;
 			sourceTree = "<group>";
 		};
-		163156F4219EC7CE00ADCAC4 /* TrusButCheckUITests */ = {
+		163156F4219EC7CE00ADCAC4 /* TrustButCheckUITests */ = {
 			isa = PBXGroup;
 			children = (
 				163156F5219EC7CE00ADCAC4 /* TrusButCheckUITests.swift */,
 				163156F7219EC7CE00ADCAC4 /* Info.plist */,
 			);
-			path = TrusButCheckUITests;
+			path = TrustButCheckUITests;
+			sourceTree = "<group>";
+		};
+		1631570D219ED4D500ADCAC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				163156DC219EC7CE00ADCAC4 /* Assets.xcassets */,
+				163156DE219EC7CE00ADCAC4 /* LaunchScreen.storyboard */,
+				1631570F219ED4FE00ADCAC4 /* Items List */,
+				1631570E219ED4E200ADCAC4 /* Add and Edit Items */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1631570E219ED4E200ADCAC4 /* Add and Edit Items */ = {
+			isa = PBXGroup;
+			children = (
+				16315709219ECDF200ADCAC4 /* AddItemViewController.swift */,
+			);
+			path = "Add and Edit Items";
+			sourceTree = "<group>";
+		};
+		1631570F219ED4FE00ADCAC4 /* Items List */ = {
+			isa = PBXGroup;
+			children = (
+				1631570B219ECE1500ADCAC4 /* ItemListTableViewController.swift */,
+				1631571D219F19D800ADCAC4 /* ItemTableViewCell.swift */,
+				16315705219ECC5F00ADCAC4 /* ItemsListHeaderTableView.xib */,
+				1631572A219F279F00ADCAC4 /* ItemsListHeaderTableView.swift */,
+			);
+			path = "Items List";
+			sourceTree = "<group>";
+		};
+		16315710219ED67000ADCAC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16315717219EF50400ADCAC4 /* CoreDataManager.swift */,
+				16315711219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift */,
+				16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */,
+				163156D9219EC7CA00ADCAC4 /* TrustButCheck.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1631571F219F1DAA00ADCAC4 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		1682DE1322613836008B5100 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				1682DE1122613830008B5100 /* ItemTextField.swift */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		163156CE219EC7CA00ADCAC4 /* TrusButCheck */ = {
+		163156CE219EC7CA00ADCAC4 /* TrustButCheck */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 163156FA219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrusButCheck" */;
+			buildConfigurationList = 163156FA219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrustButCheck" */;
 			buildPhases = (
 				163156CB219EC7CA00ADCAC4 /* Sources */,
 				163156CC219EC7CA00ADCAC4 /* Frameworks */,
@@ -143,14 +218,14 @@
 			);
 			dependencies = (
 			);
-			name = TrusButCheck;
+			name = TrustButCheck;
 			productName = TrusButCheck;
-			productReference = 163156CF219EC7CA00ADCAC4 /* TrusButCheck.app */;
+			productReference = 163156CF219EC7CA00ADCAC4 /* TrustButCheck.app */;
 			productType = "com.apple.product-type.application";
 		};
-		163156E5219EC7CE00ADCAC4 /* TrusButCheckTests */ = {
+		163156E5219EC7CE00ADCAC4 /* TrustButCheckTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 163156FD219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrusButCheckTests" */;
+			buildConfigurationList = 163156FD219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrustButCheckTests" */;
 			buildPhases = (
 				163156E2219EC7CE00ADCAC4 /* Sources */,
 				163156E3219EC7CE00ADCAC4 /* Frameworks */,
@@ -161,14 +236,14 @@
 			dependencies = (
 				163156E8219EC7CE00ADCAC4 /* PBXTargetDependency */,
 			);
-			name = TrusButCheckTests;
+			name = TrustButCheckTests;
 			productName = TrusButCheckTests;
-			productReference = 163156E6219EC7CE00ADCAC4 /* TrusButCheckTests.xctest */;
+			productReference = 163156E6219EC7CE00ADCAC4 /* TrustButCheckTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		163156F0219EC7CE00ADCAC4 /* TrusButCheckUITests */ = {
+		163156F0219EC7CE00ADCAC4 /* TrustButCheckUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 16315700219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrusButCheckUITests" */;
+			buildConfigurationList = 16315700219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrustButCheckUITests" */;
 			buildPhases = (
 				163156ED219EC7CE00ADCAC4 /* Sources */,
 				163156EE219EC7CE00ADCAC4 /* Frameworks */,
@@ -179,9 +254,9 @@
 			dependencies = (
 				163156F3219EC7CE00ADCAC4 /* PBXTargetDependency */,
 			);
-			name = TrusButCheckUITests;
+			name = TrustButCheckUITests;
 			productName = TrusButCheckUITests;
-			productReference = 163156F1219EC7CE00ADCAC4 /* TrusButCheckUITests.xctest */;
+			productReference = 163156F1219EC7CE00ADCAC4 /* TrustButCheckUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +282,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 163156CA219EC7CA00ADCAC4 /* Build configuration list for PBXProject "TrusButCheck" */;
+			buildConfigurationList = 163156CA219EC7CA00ADCAC4 /* Build configuration list for PBXProject "TrustButCheck" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -220,9 +295,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				163156CE219EC7CA00ADCAC4 /* TrusButCheck */,
-				163156E5219EC7CE00ADCAC4 /* TrusButCheckTests */,
-				163156F0219EC7CE00ADCAC4 /* TrusButCheckUITests */,
+				163156CE219EC7CA00ADCAC4 /* TrustButCheck */,
+				163156E5219EC7CE00ADCAC4 /* TrustButCheckTests */,
+				163156F0219EC7CE00ADCAC4 /* TrustButCheckUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +310,7 @@
 				163156E0219EC7CE00ADCAC4 /* LaunchScreen.storyboard in Resources */,
 				163156DD219EC7CE00ADCAC4 /* Assets.xcassets in Resources */,
 				163156D8219EC7CA00ADCAC4 /* Main.storyboard in Resources */,
+				16315706219ECC5F00ADCAC4 /* ItemsListHeaderTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +335,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				163156D5219EC7CA00ADCAC4 /* ViewController.swift in Sources */,
+				16315713219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift in Sources */,
 				163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */,
-				163156DB219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodeld in Sources */,
+				163156DB219EC7CA00ADCAC4 /* TrustButCheck.xcdatamodeld in Sources */,
+				16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */,
+				1631571E219F19D800ADCAC4 /* ItemTableViewCell.swift in Sources */,
+				1631572B219F279F00ADCAC4 /* ItemsListHeaderTableView.swift in Sources */,
+				1682DE1222613830008B5100 /* ItemTextField.swift in Sources */,
+				1631570C219ECE1500ADCAC4 /* ItemListTableViewController.swift in Sources */,
+				16315718219EF50400ADCAC4 /* CoreDataManager.swift in Sources */,
+				16315729219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift in Sources */,
+				1631570A219ECDF200ADCAC4 /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +370,12 @@
 /* Begin PBXTargetDependency section */
 		163156E8219EC7CE00ADCAC4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 163156CE219EC7CA00ADCAC4 /* TrusButCheck */;
+			target = 163156CE219EC7CA00ADCAC4 /* TrustButCheck */;
 			targetProxy = 163156E7219EC7CE00ADCAC4 /* PBXContainerItemProxy */;
 		};
 		163156F3219EC7CE00ADCAC4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 163156CE219EC7CA00ADCAC4 /* TrusButCheck */;
+			target = 163156CE219EC7CA00ADCAC4 /* TrustButCheck */;
 			targetProxy = 163156F2219EC7CE00ADCAC4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -367,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -421,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -435,13 +519,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2CF9QWSB8J;
-				INFOPLIST_FILE = TrusButCheck/Info.plist;
+				DEVELOPMENT_TEAM = 47T6UU3P43;
+				INFOPLIST_FILE = TrustButCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrusButCheck";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrustButCheck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -453,13 +537,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2CF9QWSB8J;
-				INFOPLIST_FILE = TrusButCheck/Info.plist;
+				DEVELOPMENT_TEAM = 47T6UU3P43;
+				INFOPLIST_FILE = TrustButCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrusButCheck";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrustButCheck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,17 +557,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CF9QWSB8J;
-				INFOPLIST_FILE = TrusButCheckTests/Info.plist;
+				INFOPLIST_FILE = TrustButCheckTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrusButCheckTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrustButCheckTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrusButCheck.app/TrusButCheck";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrustButCheck.app/TrustButCheck";
 			};
 			name = Debug;
 		};
@@ -494,17 +578,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CF9QWSB8J;
-				INFOPLIST_FILE = TrusButCheckTests/Info.plist;
+				INFOPLIST_FILE = TrustButCheckTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrusButCheckTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrustButCheckTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrusButCheck.app/TrusButCheck";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrustButCheck.app/TrustButCheck";
 			};
 			name = Release;
 		};
@@ -514,17 +598,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CF9QWSB8J;
-				INFOPLIST_FILE = TrusButCheckUITests/Info.plist;
+				INFOPLIST_FILE = TrustButCheckUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrusButCheckUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrustButCheckUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TrusButCheck;
+				TEST_TARGET_NAME = TrustButCheck;
 			};
 			name = Debug;
 		};
@@ -534,24 +618,24 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CF9QWSB8J;
-				INFOPLIST_FILE = TrusButCheckUITests/Info.plist;
+				INFOPLIST_FILE = TrustButCheckUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrusButCheckUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jesse-Flores.TrustButCheckUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TrusButCheck;
+				TEST_TARGET_NAME = TrustButCheck;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		163156CA219EC7CA00ADCAC4 /* Build configuration list for PBXProject "TrusButCheck" */ = {
+		163156CA219EC7CA00ADCAC4 /* Build configuration list for PBXProject "TrustButCheck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				163156F8219EC7CE00ADCAC4 /* Debug */,
@@ -560,7 +644,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		163156FA219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrusButCheck" */ = {
+		163156FA219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrustButCheck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				163156FB219EC7CE00ADCAC4 /* Debug */,
@@ -569,7 +653,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		163156FD219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrusButCheckTests" */ = {
+		163156FD219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrustButCheckTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				163156FE219EC7CE00ADCAC4 /* Debug */,
@@ -578,7 +662,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		16315700219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrusButCheckUITests" */ = {
+		16315700219EC7CE00ADCAC4 /* Build configuration list for PBXNativeTarget "TrustButCheckUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				16315701219EC7CE00ADCAC4 /* Debug */,
@@ -590,13 +674,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		163156D9219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodeld */ = {
+		163156D9219EC7CA00ADCAC4 /* TrustButCheck.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				163156DA219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodel */,
 			);
 			currentVersion = 163156DA219EC7CA00ADCAC4 /* TrusButCheck.xcdatamodel */;
-			path = TrusButCheck.xcdatamodeld;
+			path = TrustButCheck.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

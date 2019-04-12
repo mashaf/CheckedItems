@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TrusButCheck.xcodeproj">
+      location = "self:/Volumes/Macintosh HD/Users/maria/Dev/projects/TrusButCheck/TrustButCheck.xcodeproj">
    </FileRef>
 </Workspace>
