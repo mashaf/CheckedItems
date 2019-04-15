@@ -24,6 +24,7 @@
 		16315729219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */; };
 		166EA69F22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA69E22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift */; };
 		166EA6A122652275001EE2EA /* ItemsListHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA6A022652275001EE2EA /* ItemsListHeaderTableView.swift */; };
+		166EA6A422652CBC001EE2EA /* CheckItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */; };
 		1682DE1222613830008B5100 /* CheckedItemsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682DE1122613830008B5100 /* CheckedItemsTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		166EA69E22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedItemsLayoutConstraint.swift; sourceTree = "<group>"; };
 		166EA6A022652275001EE2EA /* ItemsListHeaderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsListHeaderTableView.swift; sourceTree = "<group>"; };
+		166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemsViewModel.swift; sourceTree = "<group>"; };
 		1682DE1122613830008B5100 /* CheckedItemsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedItemsTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 		163156D1219EC7CA00ADCAC4 /* CheckedItems */ = {
 			isa = PBXGroup;
 			children = (
+				166EA6A222652C6D001EE2EA /* ViewModel */,
 				163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */,
 				163156E1219EC7CE00ADCAC4 /* Info.plist */,
 				1631571F219F1DAA00ADCAC4 /* Extentions */,
@@ -195,6 +198,14 @@
 				16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		166EA6A222652C6D001EE2EA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1682DE1322613836008B5100 /* Controls */ = {
@@ -339,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16315713219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift in Sources */,
+				166EA6A422652CBC001EE2EA /* CheckItemsViewModel.swift in Sources */,
 				163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */,
 				163156DB219EC7CA00ADCAC4 /* CheckedItems.xcdatamodeld in Sources */,
 				16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */,

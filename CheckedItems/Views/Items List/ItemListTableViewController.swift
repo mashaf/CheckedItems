@@ -23,7 +23,6 @@ class ItemListTableViewController: UITableViewController {
         fetchedResultsController.delegate = self
         
         tableView.bounces = false
-        //tableView.separatorInset = UIEdgeInsetsMake(0, 30, 0, 30)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
@@ -85,6 +84,17 @@ class ItemListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = fetchedResultsController.object(at: indexPath) as! CheckedItems
         showAddItemScreen(for: item)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let item = fetchedResultsController.object(at: indexPath) as! CheckedItems
+            CheckedItemsViewModel.deleteCheckedItem(item)
+        }
     }
     
     @objc func addNewItem() {
