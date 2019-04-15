@@ -121,12 +121,12 @@
 		163156D1219EC7CA00ADCAC4 /* CheckedItems */ = {
 			isa = PBXGroup;
 			children = (
-				166EA6A222652C6D001EE2EA /* ViewModel */,
 				163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */,
 				163156E1219EC7CE00ADCAC4 /* Info.plist */,
 				1631571F219F1DAA00ADCAC4 /* Extentions */,
 				1682DE1322613836008B5100 /* Controls */,
 				16315710219ED67000ADCAC4 /* Model */,
+				166EA6A222652C6D001EE2EA /* ViewModel */,
 				1631570D219ED4D500ADCAC4 /* Views */,
 				163156D6219EC7CA00ADCAC4 /* Main.storyboard */,
 			);
