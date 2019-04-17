@@ -157,19 +157,23 @@ class AddItemViewController: UIViewController {
     
     @objc func keyboardWillShow(aNotification: NSNotification) {
         
-        let y: CGFloat = view.bounds.height >= 812 ? 100 : 60 /// TODO
+        let y: CGFloat = 100 /// TODO
         scrollViewTo(y)
         scrollView.isScrollEnabled = true
     }
     
     func scrollViewTo(_ y: CGFloat) {
-        if (y != 0) &&
-            !view.bounds.contains(CGRect(x:activeField!.frame.origin.x, y:activeField!.frame.origin.y - y, width:activeField!.frame.width, height: activeField!.frame.height)) {
-            scrollView.setContentOffset(CGPoint(x: 0, y: activeField!.frame.origin.y), animated: true)
-        } else {
-            scrollView.setContentOffset(CGPoint(x: 0, y: y), animated: true)
-        }
+        
         scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height + y)
+        let offset  = CGPoint(x:0, y:y)
+        if (y != 0) { //&&
+            //!view.bounds.contains(CGRect(x:activeField!.frame.origin.x, y:activeField!.frame.origin.y - y, width:activeField!.frame.width, height: activeField!.frame.height)) {
+            //scrollView.setContentOffset(CGPoint(x: 0, y: activeField!.frame.origin.y), animated: true)
+            scrollView.setContentOffset(offset, animated: true)
+        } else {
+            scrollView.setContentOffset(offset, animated: true)
+        }
+        
     }
     
     // TODO remake error messages to struct

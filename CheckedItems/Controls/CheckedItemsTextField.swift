@@ -103,8 +103,7 @@ class CheckedItemsTextField: UITextField {
         if !checkString(text) {
             checkValueIs(ok: false)
             becomeFirstResponder()
-            let fieldName: String = checkString(placeholder) ? placeholder! : "Unknown"
-            throw CheckedItemsTextFieldError.nilDataInput(fieldName: fieldName)
+            throw CheckedItemsTextFieldError.nilDataInput(fieldName: textFieldName)
         } else {
             return try checkInputValue()
         }
@@ -113,22 +112,23 @@ class CheckedItemsTextField: UITextField {
     
     func checkInputValue() throws -> (Any?) {
         
-        if !checkString(text) {
-            return nil
-        }
-        
         switch dataFormat {
         case .number:
             let f = Int(text ?? "0")
-            checkValueIs(ok: true)
-            return f
+            if f == nil {
+                checkValueIs(ok: false)
+                becomeFirstResponder()
+                throw CheckedItemsTextFieldError.wrongNumberFormat(fieldName: textFieldName)
+            } else {
+                checkValueIs(ok: true)
+                return f
+            }
         case .date:
             let d = checkDate()
             if  d == nil {
                 checkValueIs(ok: false)
                 becomeFirstResponder()
-                let fieldName: String = checkString(placeholder) ? placeholder! : "Unknown"
-                throw CheckedItemsTextFieldError.wrongDateFormat(fieldName: fieldName)
+                throw CheckedItemsTextFieldError.wrongDateFormat(fieldName: textFieldName)
             } else {
                 checkValueIs(ok: true)
                 return d
@@ -137,9 +137,8 @@ class CheckedItemsTextField: UITextField {
             checkValueIs(ok: true)
             return text
         }
-        
     }
-
+    
     func checkDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dataFormat.rawValue

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,22 +17,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nk-7Q-EmW">
-                    <rect key="frame" x="180" y="20" width="38" height="21"/>
+                    <rect key="frame" x="185" y="20" width="43" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR5-tM-jJQ">
-                    <rect key="frame" x="140" y="20" width="35" height="21"/>
+                    <rect key="frame" x="140" y="20" width="40" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="35" id="6gM-Rn-8s7" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
+                        <constraint firstAttribute="width" constant="40" id="6gM-Rn-8s7" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tws-lX-Arh">
-                    <rect key="frame" x="218" y="20" width="97" height="21"/>
+                    <rect key="frame" x="228" y="20" width="87" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -47,10 +47,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Tws-lX-Arh" firstAttribute="height" secondItem="6Nk-7Q-EmW" secondAttribute="height" id="8bs-WG-PrH"/>
-                <constraint firstItem="dYX-cK-CUd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="7" id="ANM-aV-qYh"/>
+                <constraint firstItem="dYX-cK-CUd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="7" id="ANM-aV-qYh" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                 <constraint firstItem="Tws-lX-Arh" firstAttribute="leading" secondItem="6Nk-7Q-EmW" secondAttribute="trailing" id="AmS-z6-lxj"/>
                 <constraint firstItem="6Nk-7Q-EmW" firstAttribute="height" secondItem="FR5-tM-jJQ" secondAttribute="height" id="EEe-IA-JcO"/>
-                <constraint firstItem="dYX-cK-CUd" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="Kbo-DV-7JU"/>
+                <constraint firstItem="dYX-cK-CUd" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="Kbo-DV-7JU" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                 <constraint firstItem="6Nk-7Q-EmW" firstAttribute="centerY" secondItem="FR5-tM-jJQ" secondAttribute="centerY" id="NGG-I8-gZW"/>
                 <constraint firstItem="6Nk-7Q-EmW" firstAttribute="width" secondItem="FR5-tM-jJQ" secondAttribute="width" constant="3" id="NHj-RO-qd1"/>
                 <constraint firstItem="Tws-lX-Arh" firstAttribute="centerY" secondItem="6Nk-7Q-EmW" secondAttribute="centerY" id="ORP-u5-0Tw"/>
