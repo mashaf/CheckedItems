@@ -108,12 +108,21 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2G-qV-p2i">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="1vm-Bu-eVP">
+                                        <rect key="frame" x="17" y="28" width="341" height="136"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="vYe-Gz-3Rf">
+                                        <rect key="frame" x="17" y="126" width="49" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="49" id="Wfg-TW-p6G"/>
+                                            <constraint firstAttribute="height" constant="38" id="eHL-Hr-0bF"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2G-qV-p2i">
                                         <rect key="frame" x="17" y="28" width="341" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="jWq-nB-2Pa"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="imageButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eaa-o5-f7a"/>
                                         </connections>
@@ -121,6 +130,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Lty-Rp-YZU" secondAttribute="trailing" id="1Fi-zQ-5nY"/>
+                                    <constraint firstItem="vYe-Gz-3Rf" firstAttribute="leading" secondItem="L2G-qV-p2i" secondAttribute="leading" id="1f9-AM-4hD"/>
                                     <constraint firstItem="fkg-nx-erz" firstAttribute="top" secondItem="zmr-Ql-OQe" secondAttribute="bottom" constant="18" id="9Nl-5U-D74" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                                     <constraint firstItem="nTJ-Yh-UT3" firstAttribute="height" secondItem="Lty-Rp-YZU" secondAttribute="height" id="ClN-y2-VL9"/>
                                     <constraint firstItem="fkg-nx-erz" firstAttribute="centerX" secondItem="wt0-IB-7AJ" secondAttribute="centerX" id="FJU-DG-FWC"/>
@@ -129,18 +139,23 @@
                                     <constraint firstItem="nTJ-Yh-UT3" firstAttribute="top" secondItem="FaR-oV-968" secondAttribute="bottom" constant="18" id="JZC-bb-cCu" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                                     <constraint firstItem="lEG-In-RZG" firstAttribute="top" secondItem="CnL-OS-Pth" secondAttribute="bottom" constant="8" id="NKA-JS-8nR" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                                     <constraint firstItem="6XV-Ns-shn" firstAttribute="top" secondItem="lEG-In-RZG" secondAttribute="bottom" constant="18" id="POs-di-crZ" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
+                                    <constraint firstItem="1vm-Bu-eVP" firstAttribute="centerX" secondItem="L2G-qV-p2i" secondAttribute="centerX" id="QQg-ri-KZO"/>
                                     <constraint firstItem="L2G-qV-p2i" firstAttribute="centerX" secondItem="wt0-IB-7AJ" secondAttribute="centerX" id="RZk-CA-OgK"/>
                                     <constraint firstAttribute="bottom" secondItem="fkg-nx-erz" secondAttribute="bottom" constant="30" id="Sun-pE-sVW" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
+                                    <constraint firstItem="vYe-Gz-3Rf" firstAttribute="bottom" secondItem="L2G-qV-p2i" secondAttribute="bottom" id="T76-gA-M3v"/>
+                                    <constraint firstItem="1vm-Bu-eVP" firstAttribute="centerY" secondItem="L2G-qV-p2i" secondAttribute="centerY" id="UHN-XX-fDD"/>
                                     <constraint firstItem="zmr-Ql-OQe" firstAttribute="leading" secondItem="6XV-Ns-shn" secondAttribute="leading" id="XvE-s8-3rr"/>
                                     <constraint firstItem="FaR-oV-968" firstAttribute="top" secondItem="Lty-Rp-YZU" secondAttribute="bottom" constant="8" id="YNv-GY-TBv" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                                     <constraint firstItem="6XV-Ns-shn" firstAttribute="leading" secondItem="lEG-In-RZG" secondAttribute="leading" id="bnK-Bp-mR8"/>
                                     <constraint firstItem="CnL-OS-Pth" firstAttribute="height" secondItem="nTJ-Yh-UT3" secondAttribute="height" id="bqa-lz-59n"/>
+                                    <constraint firstItem="1vm-Bu-eVP" firstAttribute="height" secondItem="L2G-qV-p2i" secondAttribute="height" id="bqq-KN-3ch"/>
                                     <constraint firstItem="CnL-OS-Pth" firstAttribute="top" secondItem="DhE-HU-4Hp" secondAttribute="bottom" constant="18" id="dSj-0a-xps" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                                     <constraint firstItem="6XV-Ns-shn" firstAttribute="height" secondItem="CnL-OS-Pth" secondAttribute="height" id="eS4-Wp-CTI"/>
                                     <constraint firstItem="zmr-Ql-OQe" firstAttribute="top" secondItem="6XV-Ns-shn" secondAttribute="bottom" constant="8" id="f0d-bA-GYw" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                                     <constraint firstItem="FaR-oV-968" firstAttribute="centerX" secondItem="wt0-IB-7AJ" secondAttribute="centerX" id="iGH-zP-fmh"/>
                                     <constraint firstItem="lEG-In-RZG" firstAttribute="leading" secondItem="CnL-OS-Pth" secondAttribute="leading" id="is8-dc-fCJ"/>
                                     <constraint firstItem="DhE-HU-4Hp" firstAttribute="centerX" secondItem="wt0-IB-7AJ" secondAttribute="centerX" id="kzD-jM-Ioq"/>
+                                    <constraint firstItem="1vm-Bu-eVP" firstAttribute="width" secondItem="L2G-qV-p2i" secondAttribute="width" id="mjF-5E-3oo"/>
                                     <constraint firstItem="lEG-In-RZG" firstAttribute="centerX" secondItem="wt0-IB-7AJ" secondAttribute="centerX" id="r0e-QS-QYO"/>
                                     <constraint firstItem="DhE-HU-4Hp" firstAttribute="top" secondItem="nTJ-Yh-UT3" secondAttribute="bottom" constant="8" id="rZm-iD-GvN" customClass="CheckedItemsLayoutConstraint" customModule="CheckedItems" customModuleProvider="target"/>
                                     <constraint firstItem="DhE-HU-4Hp" firstAttribute="leading" secondItem="nTJ-Yh-UT3" secondAttribute="leading" id="uoN-0N-Aw1"/>
@@ -166,7 +181,9 @@
                     <navigationItem key="navigationItem" id="NqY-Kf-tgn"/>
                     <connections>
                         <outlet property="dailyAmountLabel" destination="DhE-HU-4Hp" id="ghu-Ec-bMb"/>
+                        <outlet property="editImage" destination="vYe-Gz-3Rf" id="Ac0-on-awG"/>
                         <outlet property="imageButton" destination="L2G-qV-p2i" id="ZCb-GT-d7y"/>
+                        <outlet property="imageOfItem" destination="1vm-Bu-eVP" id="RdV-rR-AV0"/>
                         <outlet property="nameLabel" destination="FaR-oV-968" id="SdZ-Iw-0dI"/>
                         <outlet property="saveButton" destination="fkg-nx-erz" id="6Yf-z6-lc8"/>
                         <outlet property="scrollView" destination="wt0-IB-7AJ" id="VqE-EK-ld9"/>
@@ -176,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-37.5" y="-119.36619718309859"/>
+            <point key="canvasLocation" x="-212" y="-223"/>
         </scene>
         <!--Items List Ciew Controller-->
         <scene sceneID="GKP-p7-iD5">
@@ -261,4 +278,7 @@
             <point key="canvasLocation" x="-38" y="596"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="400" height="400"/>
+    </resources>
 </document>

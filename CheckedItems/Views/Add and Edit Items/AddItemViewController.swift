@@ -17,6 +17,8 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var startAmountLabel: CheckedItemsTextField!
     @IBOutlet weak var startDateLabel: CheckedItemsTextField!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var imageOfItem: UIImageView!
+    @IBOutlet weak var editImage: UIImageView!
     
     var dateFormatter = { () -> DateFormatter in
         let df = DateFormatter()
@@ -26,6 +28,7 @@ class AddItemViewController: UIViewController {
     
     let datePicker = UIDatePicker()
     var activeField: UITextField?
+    var takenImage: Bool = false
     var item:CheckedItems?
     
     override func viewDidLoad() {
@@ -55,8 +58,19 @@ class AddItemViewController: UIViewController {
             dailyAmountLabel.text = String(describing: item?.daily_amount ?? 0)
             startAmountLabel.text = String(describing: item?.start_amount ?? 0)
             startDateLabel.text = dateFormatter.string(from: (item?.start_date)! as Date)
+            
+            if item!.image != nil  {
+                imageOfItem.image = UIImage(data: item!.image as! Data)
+                editImage.alpha = 1
+            } else {
+                imageOfItem.image = #imageLiteral(resourceName: "camera")
+                editImage.alpha = 0
+            }
+            
         } else {
             startDateLabel.text = dateFormatter.string(from: Date())
+            imageOfItem.image = #imageLiteral(resourceName: "camera")
+            editImage.alpha = 0
         }
     }
     
@@ -133,12 +147,26 @@ class AddItemViewController: UIViewController {
         item!.start_date = startDate as NSDate
         item!.finish_date = finish_date
         
+        if takenImage {
+            item!.image = UIImagePNGRepresentation(imageOfItem.image!) as NSData?
+        }
+        
         CoreDataManager.instance.saveContext()
         closeWindow()
     }
     
     @IBAction func imageButtonAction(_ sender: Any) {
-        print("AAAa")
+        
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.sourceType = .camera
+        imagePickerVC.delegate = self
+        //if navigationController != nil {
+        //    navigationController?.pushViewController(imagePickerVC, animated: true)
+        //} else {
+            present(imagePickerVC, animated: true) {
+                //
+         //   }
+        }
     }
     
     func setActive(_ textField: CheckedItemsTextField?) {
@@ -240,4 +268,23 @@ extension AddItemViewController: UITextFieldDelegate {
             datePicker.date = date
         }
     }
+}
+
+extension AddItemViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
+            print("No image found")
+            return
+        }
+        imageOfItem.image = image
+        editImage.alpha = 1
+        takenImage = true
+        picker.dismiss(animated: true) {
+            //
+        }
+    }
+}
+
+extension AddItemViewController: UINavigationControllerDelegate {
+    
 }

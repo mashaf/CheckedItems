@@ -23,6 +23,7 @@ extension CheckedItems {
     @NSManaged public var start_amount: checkedItemAmountDataType
     @NSManaged public var start_date: NSDate?
     @NSManaged public var finish_date: NSDate?
+    @NSManaged public var image: NSData?
 
     var rest_amount: checkedItemAmountDataType {
         get{
