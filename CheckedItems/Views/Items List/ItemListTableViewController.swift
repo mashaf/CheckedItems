@@ -150,12 +150,16 @@ extension ItemListTableViewController: NSFetchedResultsControllerDelegate {
         }
         
         tableView.reloadData()
+        
+        /*tableView.reloadData()
+        
         if newIndexPath != nil {
             tableView.scrollToRow(at: newIndexPath!, at: .none, animated: true)
-        }
+        }*/
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
+        
     }
 }

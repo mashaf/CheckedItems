@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import TesseractOCR
+import Vision
 
 class AddItemViewController: UIViewController {
 
@@ -19,6 +21,8 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageOfItem: UIImageView!
     @IBOutlet weak var editImage: UIImageView!
+    @IBOutlet weak var countOfBoxes: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var dateFormatter = { () -> DateFormatter in
         let df = DateFormatter()
@@ -34,6 +38,8 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        activityIndicator.alpha = 0
+        
         setHidingKeyboardWhenTappedAround()
         scrollView.delegate = self
         
@@ -160,12 +166,8 @@ class AddItemViewController: UIViewController {
         let imagePickerVC = UIImagePickerController()
         imagePickerVC.sourceType = .camera
         imagePickerVC.delegate = self
-        //if navigationController != nil {
-        //    navigationController?.pushViewController(imagePickerVC, animated: true)
-        //} else {
-            present(imagePickerVC, animated: true) {
-                //
-         //   }
+        present(imagePickerVC, animated: true) {
+            //
         }
     }
     
@@ -229,6 +231,107 @@ class AddItemViewController: UIViewController {
             self.present(itemListViewController, animated: true, completion: nil)
         }
     }
+    
+    
+    // MARK: text recognition methods
+    private func startRecognizeText(from image:UIImage) {
+       
+        let str = extractTextFrom(image: image.scaleImage(640)!)
+        self.imageOfItem.image = image
+        /*
+        //let cgImageOrientation = CGImagePropertyOrientation(image.imageOrientation)
+        let handler = VNImageRequestHandler(cgImage: image.cgImage!, orientation: .downMirrored, options: [VNImageOption : Any]())
+        //let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [VNImageOption : Any]())
+        
+        let request = VNDetectTextRectanglesRequest { (request, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.imageOfItem.image = image
+                }
+                print("\nText recognition Error: \(error?.localizedDescription)\n")
+            } else {
+                self.handleDetectedRectangles(originImage: image, request: request)
+            }
+        }
+        request.reportCharacterBoxes = true
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try handler.perform([request])
+            } catch let error as NSError {
+                print("Failed to perform image request: \(error)")
+                return
+            }
+        } */
+        
+        activityIndicator.stopAnimating()
+        activityIndicator.alpha = 0
+        
+    }
+    
+    private func handleDetectedRectangles(originImage: UIImage, request: VNRequest) {
+        DispatchQueue.main.async {
+            let markedImage = self.drawRectForDetectingText(image: originImage, results: request.results as! Array<VNTextObservation>)
+            for img in self.textImages {
+                let a = self.extractTextFrom(image: img)
+                print("text is \(String(describing: a))")
+            }
+            self.imageOfItem.image = markedImage
+        }
+    }
+    
+    private func drawRectForDetectingText(image: UIImage, results:Array<VNTextObservation> ) -> UIImage? {
+        
+        UIGraphicsBeginImageContext(image.size)
+        
+        image.draw(at: CGPoint.zero)
+        //image.draw(in: CGRect(x:0, y:0, width: image.size.width, height: image.size.height))
+        
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //let ciImage = CIImage(image:image)
+        let  transform = CGAffineTransform.identity.scaledBy(x: image.size.width, y:image.size.height) //(x: ciImage!.extent.size.width, y: ciImage!.extent.size.height)
+
+        //transform.translatedBy(x: 0, y: -1)
+        
+        for item in results {
+            context.setFillColor(UIColor.clear.cgColor)
+            context.setStrokeColor(UIColor.red.cgColor)
+            context.setLineWidth(2.0)
+            context.addRect(item.boundingBox.applying(transform))
+            context.drawPath(using: .fillStroke)
+            addScreenshotOfDetectingText(sourceImage: image, boundingBox: item.boundingBox.applying(transform))
+        }
+        
+        let markedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return markedImage
+    }
+    
+    
+    
+    private var textImages = [UIImage]()
+    private func addScreenshotOfDetectingText(sourceImage image:UIImage, boundingBox: CGRect) {
+        let pct:CGFloat = 0.1
+        let newRect = boundingBox.insetBy(dx: -boundingBox.width*pct/2, dy: -boundingBox.height*pct/2)
+        let imageRef = image.cgImage?.cropping(to: newRect)
+        let croppedImage = UIImage(cgImage: imageRef!, scale: image.scale, orientation: image.imageOrientation)
+        textImages.append(croppedImage)
+    }
+    
+    private func extractTextFrom(image:UIImage) -> String {
+        var string: String = ""
+        if let tesseract = G8Tesseract(language: "eng+rus") {
+            tesseract.engineMode =  .tesseractOnly
+            tesseract.pageSegmentationMode = .auto
+            tesseract.image = image//.g8_blackAndWhite()
+            tesseract.recognize()
+            string = tesseract.recognizedText ?? ""
+            print("image: \(image),  tesseract: " + string)
+        }
+        return string
+    }
 }
 
 
@@ -272,19 +375,53 @@ extension AddItemViewController: UITextFieldDelegate {
 
 extension AddItemViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
-            print("No image found")
-            return
-        }
-        imageOfItem.image = image
-        editImage.alpha = 1
-        takenImage = true
-        picker.dismiss(animated: true) {
-            //
+        
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage { //,
+            //let scaledImage = image.scaleImage(640) {
+            
+            activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
+            
+            //imageOfItem.image = image
+            editImage.alpha = 1
+            takenImage = true
+            
+            picker.dismiss(animated: true, completion: {
+                self.startRecognizeText(from: image)
+            })
         }
     }
 }
 
 extension AddItemViewController: UINavigationControllerDelegate {
     
+}
+
+/*extension AddItemViewController: SwiftOCRDelegate {
+    func preprocessImageForOCR(_ inputImage: OCRImage) -> OCRImage? {
+        
+    }
+}*/
+
+extension UIImage {
+    func scaleImage(_ maxDimension: CGFloat) -> UIImage? {
+        
+        var scaledSize = CGSize(width: maxDimension, height: maxDimension)
+        
+        if size.width > size.height {
+            let scaleFactor = size.height / size.width
+            scaledSize.height = scaledSize.width * scaleFactor
+        } else {
+            let scaleFactor = size.width / size.height
+            scaledSize.width = scaledSize.height * scaleFactor
+        }
+        
+        UIGraphicsBeginImageContext(scaledSize)
+        draw(in: CGRect(origin: .zero, size: scaledSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return scaledImage
+    }
 }
