@@ -84,7 +84,6 @@
 		166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemsViewModel.swift; sourceTree = "<group>"; };
 		1682DE1122613830008B5100 /* CheckedItemsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedItemsTextField.swift; sourceTree = "<group>"; };
 		16C99DDE2270AF25005AC350 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
-		16C99DE02270F1F7005AC350 /* CheckedItems.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CheckedItems.entitlements; sourceTree = "<group>"; };
 		16FBA210A6FB5260C02BAAE1 /* Pods-CheckedItemsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItemsTests.release.xcconfig"; path = "Target Support Files/Pods-CheckedItemsTests/Pods-CheckedItemsTests.release.xcconfig"; sourceTree = "<group>"; };
 		33D2DDD600884C41D8E60891 /* Pods-CheckedItemsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItemsUITests.release.xcconfig"; path = "Target Support Files/Pods-CheckedItemsUITests/Pods-CheckedItemsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		678069E3BB647F4D9DFD05CD /* Pods-CheckedItemsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItemsTests.debug.xcconfig"; path = "Target Support Files/Pods-CheckedItemsTests/Pods-CheckedItemsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,7 +149,6 @@
 		163156D1219EC7CA00ADCAC4 /* CheckedItems */ = {
 			isa = PBXGroup;
 			children = (
-				16C99DE02270F1F7005AC350 /* CheckedItems.entitlements */,
 				16C99DDE2270AF25005AC350 /* tessdata */,
 				163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */,
 				163156E1219EC7CE00ADCAC4 /* Info.plist */,
