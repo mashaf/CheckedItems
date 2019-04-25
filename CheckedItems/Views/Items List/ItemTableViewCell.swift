@@ -10,11 +10,11 @@ import UIKit
 
 class ItemTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameTextField: UILabel!
     @IBOutlet weak var spentLabel: UILabel!
     @IBOutlet weak var dateFinishLabel: UILabel!
     @IBOutlet weak var restLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,17 +25,17 @@ class ItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func configure(with item: CheckedItems) {
-        
-        nameLabel.text = item.item_name
-        
+
+        nameTextField.text = item.itemName
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM.dd.yyyy"
-        dateFinishLabel.text = dateFormatter.string(from: item.finish_date! as Date)
-        
-        spentLabel.text = String(item.spent_amount)
-        restLabel.text  = String(item.rest_amount)
+        dateFinishLabel.text = dateFormatter.string(from: item.finishDate! as Date)
+
+        spentLabel.text = String(item.spentAmount)
+        restLabel.text  = String(item.restAmount)
     }
 
 }

@@ -16,77 +16,86 @@ enum CheckedItemsInputDataFormat: String {
 
 enum CheckedItemsTextFieldError: Error {
     case wrongDataInputFormat(errorMessage: String),
-    nilDataInput(fieldName: String),
-    wrongNumberFormat(fieldName: String),
-    wrongDateFormat(fieldName: String),
-    otherError(errorMessage: String)
-}
-
-enum CheckedItemsErrorMessageDetailed: Error {
-    
-    case other(errorMessage: String),
+    nilDataInput(textFieldName: String),
     wrongNumberFormat(textFieldName: String),
     wrongDateFormat(textFieldName: String),
-    fieldMissed(textFieldName: String)
-    
+    otherError(errorMessage: String)
+//}
+
+//enum CheckedItemsErrorMessageDetailed: Error {
+
+    //case other(errorMessage: String),
+    //wrongNumberFormat(textFieldName: String),
+    //wrongDateFormat(textFieldName: String),
+    //fieldMissed(textFieldName: String)
+
     var localizedDescription: String {
         switch self {
         case .wrongNumberFormat(let textFieldName):
             return "Wrong number format. \"\(textFieldName)\" must be a number."
         case .wrongDateFormat(let textFieldName):
             return "Wrong date format. \"\(textFieldName)\" must be a date."
-        case .fieldMissed(let textFieldName):
+        //case .fieldMissed(let textFieldName):
+        case .nilDataInput(let textFieldName):
             return "You missed a text field. \"\(textFieldName)\" must be entered before adding."
-        case .other(let errorMessage):
+        //case .other(let errorMessage):
+        case .otherError(let errorMessage), .wrongDataInputFormat(let errorMessage):
             return errorMessage
         }
     }
 }
 
 class CheckedItemsTextField: UITextField {
-    
+
     var errorTitleWorld: String?
-    var errorEmptyFieldType: Error?
+    var errorEmptyFieldType: CheckedItemsTextFieldError? //Error?
     var datePicker: UIDatePicker?
-    
-    var dataFormat:CheckedItemsInputDataFormat = .text {
+
+    var dataFormat: CheckedItemsInputDataFormat = .text {
         didSet {
             setInputView()
         }
     }
-    
-    var textFieldName:String! {
-        get {
-            return checkString(placeholder) ? placeholder! : "this one"
-        }
+
+    var textFieldName: String! {
+        return checkString(placeholder) ? placeholder! : "this one"
     }
 
     // MARK: Setters
     func setValue(_ newValue: Any?) {
-        
+
         var newString = ""
-        
+
         switch dataFormat {
-         case .date:
+        case .date:
             let formatter = DateFormatter()
             formatter.dateFormat = dataFormat.rawValue
-            newString = formatter.string(from: newValue as! Date)
-            
+            guard let newDate = newValue as? Date else {
+                fatalError("Wrong date format for \(String(describing: newValue))")
+            }
+            newString = formatter.string(from: newDate)
+
         case .number:
             let formatter = NumberFormatter()
             formatter.numberStyle = .none
-            newString = formatter.string(from: NSNumber(value: newValue as! checkedItemAmountDataType))!
-            
+            guard let newNumber = newValue as? CheckedItemAmountDataType else {
+                fatalError("Wrong number format for \(String(describing: newValue))")
+            }
+            newString = formatter.string(from: NSNumber(value: newNumber)) ?? "0"
+
         default:
-            newString = newValue as! String
+            guard let newNewString = newValue as? String else {
+                fatalError("Wrong string format for \(String(describing: newValue))")
+            }
+            newString = newNewString
         }
-        
+
         text = newString
     }
-    
+
     /// keyboard with predefined type or UIDatePicker
     func setInputView() {
-        
+
         switch dataFormat {
         case .number:
             keyboardType = .decimalPad
@@ -95,60 +104,59 @@ class CheckedItemsTextField: UITextField {
         default:
             keyboardType = .default
         }
-        
+
     }
-    
-    //MARK: validation methods
+
+    // MARK: validation methods
     func checkInputValueAndNull() throws -> (Any?) {
         if !checkString(text) {
-            checkValueIs(ok: false)
+            checkValueIs(success: false)
             becomeFirstResponder()
-            throw CheckedItemsTextFieldError.nilDataInput(fieldName: textFieldName)
+            throw CheckedItemsTextFieldError.nilDataInput(textFieldName: textFieldName)
         } else {
             return try checkInputValue()
         }
     }
-    
-    
+
     func checkInputValue() throws -> (Any?) {
-        
+
         switch dataFormat {
         case .number:
-            let f = Int(text ?? "0")
-            if f == nil {
-                checkValueIs(ok: false)
+            let floatValue = Int(text ?? "0")
+            if floatValue == nil {
+                checkValueIs(success: false)
                 becomeFirstResponder()
-                throw CheckedItemsTextFieldError.wrongNumberFormat(fieldName: textFieldName)
+                throw CheckedItemsTextFieldError.wrongNumberFormat(textFieldName: textFieldName)
             } else {
-                checkValueIs(ok: true)
-                return f
+                checkValueIs(success: true)
+                return floatValue
             }
         case .date:
-            let d = checkDate()
-            if  d == nil {
-                checkValueIs(ok: false)
+            let dateValue = checkDate()
+            if  dateValue == nil {
+                checkValueIs(success: false)
                 becomeFirstResponder()
-                throw CheckedItemsTextFieldError.wrongDateFormat(fieldName: textFieldName)
+                throw CheckedItemsTextFieldError.wrongDateFormat(textFieldName: textFieldName)
             } else {
-                checkValueIs(ok: true)
-                return d
+                checkValueIs(success: true)
+                return dateValue
             }
         default:
-            checkValueIs(ok: true)
+            checkValueIs(success: true)
             return text
         }
     }
-    
+
     func checkDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dataFormat.rawValue
         return dateFormatter.date(from: text!)
     }
-    
-    func checkValueIs(ok:Bool) {
+
+    func checkValueIs(success: Bool) {
        // do something if you need to
     }
-    
+
     private func checkString(_ string: String?) -> Bool {
         guard let trimmedString = string?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) else {
             return false

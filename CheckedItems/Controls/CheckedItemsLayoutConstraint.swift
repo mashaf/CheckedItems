@@ -8,10 +8,10 @@
 
 import UIKit
 
-let screenScaleFactor:CGFloat = UIScreen.main.bounds.height < 667 ? 2/3 : 1
+let screenScaleFactor: CGFloat = UIScreen.main.bounds.height < 667 ? 2/3 : 1
 
 class CheckedItemsLayoutConstraint: NSLayoutConstraint {
-    
+
     override var constant: CGFloat {
         set {
             super.constant *= screenScaleFactor

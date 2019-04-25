@@ -11,35 +11,35 @@ import CoreData
 
 class ItemListTableViewController: UITableViewController {
 
-    lazy var fetchedResultsController:NSFetchedResultsController = CheckedItems.getFetchedResultsController()
-    
+    lazy var fetchedResultsController: NSFetchedResultsController = CheckedItems.getFetchedResultsController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .white
-        
+
         fetchedResultsController.delegate = self
-        
+
         tableView.bounces = false
-        
+
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
-        
+
         let nib = UINib(nibName: "ItemsListHeaderTableView", bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "ItemsListHeaderTableView")
-        
+
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print(error)
         }
-        
+
         let addNewItemButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewItem))
         self.navigationItem.rightBarButtonItem = addNewItemButton
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -48,63 +48,74 @@ class ItemListTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 50
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView(frame: CGRect(x:0, y:0, width:tableView.bounds.width, height:60))
+        return UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 60))
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ItemsListHeaderTableView") as! ItemsListHeaderTableView
+        guard let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ItemsListHeaderTableView") as? ItemsListHeaderTableView
+        else {
+            fatalError("Wrong header view id ItemsListHeaderTableView for the table")
+        }
         return headerView
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemInfoCell", for: indexPath)  as! ItemTableViewCell
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemInfoCell", for: indexPath)  as? ItemTableViewCell else {
+            fatalError("Wrong tableview cell id itemInfoCell")
+        }
+
         guard let item = fetchedResultsController.object(at: indexPath) as? CheckedItems else {
             return cell
         }
-        
+
         cell.configure(with: item)
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = fetchedResultsController.object(at: indexPath) as! CheckedItems
+        guard let item = fetchedResultsController.object(at: indexPath) as? CheckedItems else {
+            fatalError("There are no object at \(indexPath) in the database")
+        }
         showAddItemScreen(for: item)
     }
-    
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            let item = fetchedResultsController.object(at: indexPath) as! CheckedItems
+        if editingStyle == .delete {
+            guard let item = fetchedResultsController.object(at: indexPath) as? CheckedItems else {
+                fatalError("There are no object at \(indexPath) in the database")
+            }
             CheckedItemsViewModel.deleteCheckedItem(item)
         }
     }
-    
+
     @objc func addNewItem() {
         showAddItemScreen(for: nil)
     }
-    
+
     // MARK: private methods
     private func showAddItemScreen(for item: CheckedItems?) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let addItemViewController = storyBoard.instantiateViewController(withIdentifier: "AddItemViewController") as! AddItemViewController
+        guard let addItemViewController = storyBoard.instantiateViewController(withIdentifier: "AddItemViewController") as? AddItemViewController else {
+            fatalError("No view controller with id AddItemViewController")
+        }
         addItemViewController.item = item
         self.navigationController?.pushViewController(addItemViewController, animated: true)
     }
@@ -112,12 +123,14 @@ class ItemListTableViewController: UITableViewController {
 
 // MARK: NSFetchedResultsControllerDelegate
 extension ItemListTableViewController: NSFetchedResultsControllerDelegate {
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
             self.tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
@@ -127,17 +140,18 @@ extension ItemListTableViewController: NSFetchedResultsControllerDelegate {
             return
         }
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        var whereToMoveAfter = indexPath
-        
+        var whereToMoveAfter: IndexPath? // = indexPath // TODO
+
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
             whereToMoveAfter = newIndexPath
         case .delete:
             if indexPath!.row == tableView.numberOfRows(inSection: indexPath!.section) - 1 {
-                whereToMoveAfter = IndexPath(row: indexPath!.row == 0 ? 0 : indexPath!.row - 1, section: indexPath!.section)
+                let rowNum = indexPath!.row == 0 ? 0 : indexPath!.row - 1
+                whereToMoveAfter = IndexPath(row: rowNum, section: indexPath!.section)
             } else {
                 whereToMoveAfter = indexPath
             }
@@ -148,18 +162,15 @@ extension ItemListTableViewController: NSFetchedResultsControllerDelegate {
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
             whereToMoveAfter = newIndexPath
         }
-        
+
         tableView.reloadData()
-        
-        /*tableView.reloadData()
-        
-        if newIndexPath != nil {
-            tableView.scrollToRow(at: newIndexPath!, at: .none, animated: true)
-        }*/
+        if whereToMoveAfter != nil {
+            tableView.scrollToRow(at: whereToMoveAfter!, at: .none, animated: true)
+        }
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
-        
+
     }
 }

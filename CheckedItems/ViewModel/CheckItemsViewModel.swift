@@ -10,7 +10,7 @@ import UIKit
 
 class CheckedItemsViewModel {
 
-    static func deleteCheckedItem(_ item:CheckedItems) {
+    static func deleteCheckedItem(_ item: CheckedItems) {
         CoreDataManager.instance.managedObjectContext.delete(item)
         CoreDataManager.instance.saveContext()
     }

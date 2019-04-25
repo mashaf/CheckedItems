@@ -211,15 +211,15 @@
                     <connections>
                         <outlet property="activityIndicator" destination="72d-aY-AM0" id="PFh-nf-oDn"/>
                         <outlet property="countOfBoxes" destination="1TI-BG-asZ" id="7k4-Q8-oia"/>
-                        <outlet property="dailyAmountLabel" destination="DhE-HU-4Hp" id="ghu-Ec-bMb"/>
+                        <outlet property="dailyAmountTextField" destination="DhE-HU-4Hp" id="ghu-Ec-bMb"/>
                         <outlet property="editImage" destination="vYe-Gz-3Rf" id="Ac0-on-awG"/>
                         <outlet property="imageButton" destination="L2G-qV-p2i" id="ZCb-GT-d7y"/>
                         <outlet property="imageOfItem" destination="1vm-Bu-eVP" id="RdV-rR-AV0"/>
-                        <outlet property="nameLabel" destination="FaR-oV-968" id="SdZ-Iw-0dI"/>
+                        <outlet property="nameTextField" destination="FaR-oV-968" id="SdZ-Iw-0dI"/>
                         <outlet property="saveButton" destination="fkg-nx-erz" id="6Yf-z6-lc8"/>
                         <outlet property="scrollView" destination="wt0-IB-7AJ" id="VqE-EK-ld9"/>
-                        <outlet property="startAmountLabel" destination="lEG-In-RZG" id="ByE-u8-H0N"/>
-                        <outlet property="startDateLabel" destination="zmr-Ql-OQe" id="aeP-GD-Ax5"/>
+                        <outlet property="startAmountTextField" destination="lEG-In-RZG" id="ByE-u8-H0N"/>
+                        <outlet property="startDateTextField" destination="zmr-Ql-OQe" id="aeP-GD-Ax5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -291,7 +291,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dateFinishLabel" destination="cbL-x3-yMx" id="FRY-JC-egT"/>
-                                    <outlet property="nameLabel" destination="7Zr-Vp-ySO" id="y9E-jl-RWx"/>
+                                    <outlet property="nameTextField" destination="7Zr-Vp-ySO" id="y9E-jl-RWx"/>
                                     <outlet property="restLabel" destination="obw-Ue-haU" id="Nxx-Iw-b6F"/>
                                     <outlet property="spentLabel" destination="QYF-29-4i4" id="RXo-7g-lNJ"/>
                                 </connections>
