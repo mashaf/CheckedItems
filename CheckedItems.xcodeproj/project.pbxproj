@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1617BF9522726915003F6495 /* CGImagePropertyOrientation+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BF9322726915003F6495 /* CGImagePropertyOrientation+Extention.swift */; };
+		1617BF9622726915003F6495 /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BF9422726915003F6495 /* UIImage+Extentions.swift */; };
 		163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */; };
 		163156D8219EC7CA00ADCAC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 163156D6219EC7CA00ADCAC4 /* Main.storyboard */; };
 		163156DB219EC7CA00ADCAC4 /* CheckedItems.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 163156D9219EC7CA00ADCAC4 /* CheckedItems.xcdatamodeld */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		06B35E4C476BA0BBB5552F55 /* Pods-CheckedItems.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItems.release.xcconfig"; path = "Target Support Files/Pods-CheckedItems/Pods-CheckedItems.release.xcconfig"; sourceTree = "<group>"; };
+		1617BF9322726915003F6495 /* CGImagePropertyOrientation+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+Extention.swift"; sourceTree = "<group>"; };
+		1617BF9422726915003F6495 /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
 		163156CF219EC7CA00ADCAC4 /* CheckedItems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckedItems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		163156D7219EC7CA00ADCAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 		1631571F219F1DAA00ADCAC4 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				1617BF9322726915003F6495 /* CGImagePropertyOrientation+Extention.swift */,
+				1617BF9422726915003F6495 /* UIImage+Extentions.swift */,
 				16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */,
 			);
 			path = Extentions;
@@ -426,7 +432,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint --config .swiftlint.yml\nelse\n    echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n    exit 1\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint --config .swiftlint.yml\n    swiftlint autocorrect\nelse\n    echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n    exit 1\nfi\n";
 		};
 		6EE5B23871C42627B58219F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -525,7 +531,9 @@
 			files = (
 				16315713219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift in Sources */,
 				166EA6A422652CBC001EE2EA /* CheckItemsViewModel.swift in Sources */,
+				1617BF9522726915003F6495 /* CGImagePropertyOrientation+Extention.swift in Sources */,
 				163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */,
+				1617BF9622726915003F6495 /* UIImage+Extentions.swift in Sources */,
 				163156DB219EC7CA00ADCAC4 /* CheckedItems.xcdatamodeld in Sources */,
 				16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */,
 				1631571E219F19D800ADCAC4 /* ItemTableViewCell.swift in Sources */,
