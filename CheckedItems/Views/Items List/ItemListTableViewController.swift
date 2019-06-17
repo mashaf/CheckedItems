@@ -27,8 +27,9 @@ class ItemListTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
 
-        let nib = UINib(nibName: "ItemsListHeaderTableView", bundle: nil)
-        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "ItemsListHeaderTableView")
+        let itemListNibName = "ItemsListHeaderTableView"
+        let nib = UINib(nibName: itemListNibName, bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: itemListNibName)
 
         do {
             try fetchedResultsController.performFetch()
@@ -62,9 +63,10 @@ class ItemListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ItemsListHeaderTableView") as? ItemsListHeaderTableView
+        let itemListHeaderViewId = "ItemsListHeaderTableView"
+        guard let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: itemListHeaderViewId) as? ItemsListHeaderTableView
         else {
-            fatalError("Wrong header view id ItemsListHeaderTableView for the table")
+            fatalError("Wrong header view id \(itemListHeaderViewId) for the table")
         }
         return headerView
     }
@@ -74,8 +76,9 @@ class ItemListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemInfoCell", for: indexPath)  as? ItemTableViewCell else {
-            fatalError("Wrong tableview cell id itemInfoCell")
+        let cellId = "itemInfoCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)  as? ItemTableViewCell else {
+            fatalError("Wrong tableview cell id \(cellId)")
         }
 
         guard let item = fetchedResultsController.object(at: indexPath) as? CheckedItems else {
@@ -106,6 +109,7 @@ class ItemListTableViewController: UITableViewController {
         }
     }
 
+    // MARK: Action methods
     @objc func addNewItem() {
         showAddItemScreen(for: nil)
     }
@@ -113,10 +117,16 @@ class ItemListTableViewController: UITableViewController {
     // MARK: private methods
     private func showAddItemScreen(for item: CheckedItems?) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let addItemViewController = storyBoard.instantiateViewController(withIdentifier: "AddItemViewController") as? AddItemViewController else {
-            fatalError("No view controller with id AddItemViewController")
+        let addItemVCId = "AddItemViewController"
+        
+        guard let addItemViewController = storyBoard.instantiateViewController(withIdentifier: addItemVCId) as? AddItemViewController else {
+            fatalError("No view controller with id \(addItemVCId)")
         }
-        addItemViewController.item = item
+        
+        if item != nil {
+            addItemViewController.item = CheckItemViewModel(item: item!)
+        }
+        
         self.navigationController?.pushViewController(addItemViewController, animated: true)
     }
 }
@@ -164,9 +174,9 @@ extension ItemListTableViewController: NSFetchedResultsControllerDelegate {
         }
 
         tableView.reloadData()
-        if whereToMoveAfter != nil {
-            tableView.scrollToRow(at: whereToMoveAfter!, at: .none, animated: true)
-        }
+        //if whereToMoveAfter != nil {
+        //    tableView.scrollToRow(at: whereToMoveAfter!, at: .none, animated: true)
+        //}
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

@@ -18,8 +18,9 @@ extension CheckedItems {
         return NSFetchRequest<CheckedItems>(entityName: "CheckedItems")
     }
 
+    @NSManaged public var id: CheckedItemAmountDataType
     @NSManaged public var dailyAmount: CheckedItemAmountDataType
-    @NSManaged public var itemName: String?
+    @NSManaged public var itemName: String
     @NSManaged public var startAmount: CheckedItemAmountDataType
     @NSManaged public var startDate: NSDate?
     @NSManaged public var finishDate: NSDate?
@@ -32,10 +33,10 @@ extension CheckedItems {
     var spentAmount: CheckedItemAmountDataType {
         return dailyAmount * getSpentDays()
     }
-
+    
     private func getSpentDays() -> CheckedItemAmountDataType {
-        let date = Date()
-        let difference = date.timeIntervalSince(startDate! as Date)
+        guard let tStartDate = startDate as Date? else { return 0 }
+        let difference = Date().timeIntervalSince(tStartDate)
         return CheckedItemAmountDataType(difference/(60 * 60 * 24 ))
     }
 }

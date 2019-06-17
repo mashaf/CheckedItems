@@ -24,6 +24,8 @@
 		1631571E219F19D800ADCAC4 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631571D219F19D800ADCAC4 /* ItemTableViewCell.swift */; };
 		16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */; };
 		16315729219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */; };
+		163C89772283A582005FB1E3 /* CheckItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C89762283A582005FB1E3 /* CheckItemViewModel.swift */; };
+		163C897D2283E222005FB1E3 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C897C2283E222005FB1E3 /* DateHelper.swift */; };
 		16418A072270A34F00CA33C2 /* Pods_CheckedItems.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16418A062270A34F00CA33C2 /* Pods_CheckedItems.framework */; };
 		16418A092270A34F00CA33C2 /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16418A082270A34F00CA33C2 /* TesseractOCR.framework */; };
 		16418A0B2270A35900CA33C2 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16418A0A2270A35900CA33C2 /* CoreImage.framework */; };
@@ -79,6 +81,8 @@
 		1631571D219F19D800ADCAC4 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		163C89762283A582005FB1E3 /* CheckItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemViewModel.swift; sourceTree = "<group>"; };
+		163C897C2283E222005FB1E3 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		16418A062270A34F00CA33C2 /* Pods_CheckedItems.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CheckedItems.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16418A082270A34F00CA33C2 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16418A0A2270A35900CA33C2 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -153,6 +157,7 @@
 		163156D1219EC7CA00ADCAC4 /* CheckedItems */ = {
 			isa = PBXGroup;
 			children = (
+				163C89792283C50E005FB1E3 /* Helper */,
 				16C99DDE2270AF25005AC350 /* tessdata */,
 				163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */,
 				163156E1219EC7CE00ADCAC4 /* Info.plist */,
@@ -235,6 +240,14 @@
 			path = Extentions;
 			sourceTree = "<group>";
 		};
+		163C89792283C50E005FB1E3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				163C897C2283E222005FB1E3 /* DateHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		16418A052270A34F00CA33C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */,
+				163C89762283A582005FB1E3 /* CheckItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -538,9 +552,11 @@
 				16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */,
 				1631571E219F19D800ADCAC4 /* ItemTableViewCell.swift in Sources */,
 				1682DE1222613830008B5100 /* CheckedItemsTextField.swift in Sources */,
+				163C897D2283E222005FB1E3 /* DateHelper.swift in Sources */,
 				1631570C219ECE1500ADCAC4 /* ItemListTableViewController.swift in Sources */,
 				16315718219EF50400ADCAC4 /* CoreDataManager.swift in Sources */,
 				16315729219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift in Sources */,
+				163C89772283A582005FB1E3 /* CheckItemViewModel.swift in Sources */,
 				1631570A219ECDF200ADCAC4 /* AddItemViewController.swift in Sources */,
 				166EA69F22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift in Sources */,
 				166EA6A122652275001EE2EA /* ItemsListHeaderTableView.swift in Sources */,

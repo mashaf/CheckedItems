@@ -20,14 +20,6 @@ enum CheckedItemsTextFieldError: Error {
     wrongNumberFormat(textFieldName: String),
     wrongDateFormat(textFieldName: String),
     otherError(errorMessage: String)
-//}
-
-//enum CheckedItemsErrorMessageDetailed: Error {
-
-    //case other(errorMessage: String),
-    //wrongNumberFormat(textFieldName: String),
-    //wrongDateFormat(textFieldName: String),
-    //fieldMissed(textFieldName: String)
 
     var localizedDescription: String {
         switch self {
@@ -35,10 +27,8 @@ enum CheckedItemsTextFieldError: Error {
             return "Wrong number format. \"\(textFieldName)\" must be a number."
         case .wrongDateFormat(let textFieldName):
             return "Wrong date format. \"\(textFieldName)\" must be a date."
-        //case .fieldMissed(let textFieldName):
         case .nilDataInput(let textFieldName):
             return "You missed a text field. \"\(textFieldName)\" must be entered before adding."
-        //case .other(let errorMessage):
         case .otherError(let errorMessage), .wrongDataInputFormat(let errorMessage):
             return errorMessage
         }
@@ -108,49 +98,37 @@ class CheckedItemsTextField: UITextField {
     }
 
     // MARK: validation methods
-    func checkInputValueAndNull() throws -> (Any?) {
+    func checkInputValueAndNull() throws {
         if !checkString(text) {
             checkValueIs(success: false)
             becomeFirstResponder()
             throw CheckedItemsTextFieldError.nilDataInput(textFieldName: textFieldName)
         } else {
-            return try checkInputValue()
+            try checkInputValue()
         }
     }
 
-    func checkInputValue() throws -> (Any?) {
+    func checkInputValue() throws {
 
         switch dataFormat {
         case .number:
-            let floatValue = Int(text ?? "0")
-            if floatValue == nil {
+            guard Int(text ?? "0") != nil else {
                 checkValueIs(success: false)
                 becomeFirstResponder()
                 throw CheckedItemsTextFieldError.wrongNumberFormat(textFieldName: textFieldName)
-            } else {
-                checkValueIs(success: true)
-                return floatValue
             }
         case .date:
-            let dateValue = checkDate()
-            if  dateValue == nil {
+            guard DateHelper.getDateFrom(text!) != nil else {
                 checkValueIs(success: false)
                 becomeFirstResponder()
                 throw CheckedItemsTextFieldError.wrongDateFormat(textFieldName: textFieldName)
-            } else {
-                checkValueIs(success: true)
-                return dateValue
             }
         default:
-            checkValueIs(success: true)
-            return text
+            break
         }
-    }
-
-    func checkDate() -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = dataFormat.rawValue
-        return dateFormatter.date(from: text!)
+        
+        checkValueIs(success: true)
+        
     }
 
     func checkValueIs(success: Bool) {
@@ -161,6 +139,6 @@ class CheckedItemsTextField: UITextField {
         guard let trimmedString = string?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) else {
             return false
         }
-        return trimmedString.count != 0
+        return !trimmedString.isEmpty
     }
 }

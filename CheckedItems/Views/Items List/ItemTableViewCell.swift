@@ -28,14 +28,12 @@ class ItemTableViewCell: UITableViewCell {
 
     func configure(with item: CheckedItems) {
 
-        nameTextField.text = item.itemName
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd.yyyy"
-        dateFinishLabel.text = dateFormatter.string(from: item.finishDate! as Date)
-
-        spentLabel.text = String(item.spentAmount)
-        restLabel.text  = String(item.restAmount)
+        let checkedItemViewModel = CheckItemViewModel(item: item)
+        
+        nameTextField.text   = checkedItemViewModel.itemName
+        dateFinishLabel.text = checkedItemViewModel.finishDate
+        spentLabel.text      = checkedItemViewModel.spentAmount
+        restLabel.text       = checkedItemViewModel.restAmount
     }
 
 }
