@@ -108,7 +108,7 @@ class ItemListTableViewController: UITableViewController {
             CheckedItemsViewModel.deleteCheckedItem(item)
         })
         let addRowAction = UITableViewRowAction(style: .normal, title: "Extend item", handler: {_, _ in
-            self.showAddItemScreen(for: item)
+            self.showExtendItemScreen(for: item)
         })
         return [deleteRowAction, addRowAction]
     }
@@ -119,13 +119,18 @@ class ItemListTableViewController: UITableViewController {
     }
 
     // MARK: private methods
-    private func showAddItemScreen(for item: CheckedItems?) {
+    private func getAddItemViewController() -> AddItemViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let addItemVCId = "AddItemViewController"
         
         guard let addItemViewController = storyBoard.instantiateViewController(withIdentifier: addItemVCId) as? AddItemViewController else {
             fatalError("No view controller with id \(addItemVCId)")
         }
+        return addItemViewController
+    }
+    
+    private func showAddItemScreen(for item: CheckedItems?) {
+        let addItemViewController  = getAddItemViewController()
         
         if item != nil {
             addItemViewController.item = CheckItemViewModel(item: item!)
@@ -135,7 +140,11 @@ class ItemListTableViewController: UITableViewController {
     }
     
     private func showExtendItemScreen(for item: CheckedItems) {
-        ///
+        let addItemViewController  = getAddItemViewController()
+        addItemViewController.item = CheckItemViewModel(item: item)
+        addItemViewController.mode = .extend
+        
+        self.navigationController?.pushViewController(addItemViewController, animated: true)
     }
 }
 

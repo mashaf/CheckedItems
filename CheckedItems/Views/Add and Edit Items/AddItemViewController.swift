@@ -12,6 +12,10 @@ import Vision
 
 class AddItemViewController: UIViewController {
 
+    enum EditItemModeType {
+        case edit, add, extend
+    }
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var nameTextField: CheckedItemsTextField!
@@ -28,6 +32,7 @@ class AddItemViewController: UIViewController {
     var activeField: CheckedItemsTextField?
     var takenImage: Bool = false
     var item: CheckItemViewModel?
+    var mode: EditItemModeType = .add
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +65,14 @@ class AddItemViewController: UIViewController {
         if item != nil {
             nameTextField.text = item?.itemName
             dailyAmountTextField.text = item?.dailyAmount
-            startAmountTextField.text = item?.startAmount
+            if mode == .extend {
+                startAmountTextField.text = ""
+                startAmountTextField.placeholder = String(item!.startAmount ?? "0") + " + "
+                startAmountTextField.becomeFirstResponder()
+            } else {
+                startAmountTextField.text = item?.startAmount
+            }
+            
             startDateTextField.text = item?.startDate
             imageOfItem.image = item?.image
         } else {
@@ -149,6 +161,8 @@ class AddItemViewController: UIViewController {
             viewAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(viewAlert, animated: true, completion: nil)
             
+        } else if mode == .extend {
+            self.addToItem(self.item!.item)
         } else {
             saveItem()
         }
@@ -156,7 +170,9 @@ class AddItemViewController: UIViewController {
     }
     
     private func addToItem(_ item: CheckedItems) {
-        self.item = CheckItemViewModel(item: item)
+        if self.item == nil {
+            self.item = CheckItemViewModel(item: item)
+        }
         self.item?.addVerifiedValuesToItem(amount: startAmountTextField.text!, boxCount: countOfBoxesTextField.text)
         closeWindow()
     }
