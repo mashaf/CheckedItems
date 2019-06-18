@@ -52,4 +52,16 @@ public class CheckedItems: NSManagedObject {
                                                             sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsCtrl
     }
+    
+    public class func getItemByName(_ name: String) -> [CheckedItems] {
+        let request = createNewFetchRequest()
+        
+        request.predicate = NSPredicate(format: "itemName == %@", name)
+
+        guard let result = try? CoreDataManager.instance.managedObjectContext.fetch(request) as? [CheckedItems] else {
+            return []
+        }
+        return result!
+    }
+    
 }

@@ -210,7 +210,7 @@
                     <navigationItem key="navigationItem" id="NqY-Kf-tgn"/>
                     <connections>
                         <outlet property="activityIndicator" destination="72d-aY-AM0" id="PFh-nf-oDn"/>
-                        <outlet property="countOfBoxes" destination="1TI-BG-asZ" id="7k4-Q8-oia"/>
+                        <outlet property="countOfBoxesTextField" destination="1TI-BG-asZ" id="bDW-M7-Hny"/>
                         <outlet property="dailyAmountTextField" destination="DhE-HU-4Hp" id="ghu-Ec-bMb"/>
                         <outlet property="editImage" destination="vYe-Gz-3Rf" id="Ac0-on-awG"/>
                         <outlet property="imageButton" destination="L2G-qV-p2i" id="ZCb-GT-d7y"/>

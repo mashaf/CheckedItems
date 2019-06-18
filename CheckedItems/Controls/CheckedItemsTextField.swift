@@ -112,7 +112,7 @@ class CheckedItemsTextField: UITextField {
 
         switch dataFormat {
         case .number:
-            guard Int(text ?? "0") != nil else {
+            guard CheckedItemAmountDataType(text ?? "0") != nil else {
                 checkValueIs(success: false)
                 becomeFirstResponder()
                 throw CheckedItemsTextFieldError.wrongNumberFormat(textFieldName: textFieldName)

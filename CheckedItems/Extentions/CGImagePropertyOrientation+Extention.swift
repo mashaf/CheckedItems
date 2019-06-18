@@ -3,7 +3,7 @@
 //  CheckedItems
 //
 //  Created by Maria Soboleva on 4/18/19.
-//  Copyright © 2019 Jesse Flores. All rights reserved.
+//  Copyright © 2019 Maria Soboleva. All rights reserved.
 //
 
 import UIKit

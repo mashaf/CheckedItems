@@ -33,6 +33,7 @@
 		166EA69F22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA69E22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift */; };
 		166EA6A122652275001EE2EA /* ItemsListHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA6A022652275001EE2EA /* ItemsListHeaderTableView.swift */; };
 		166EA6A422652CBC001EE2EA /* CheckItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */; };
+		1670EC2822B836B800164EDF /* ImageProcessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670EC2722B836B800164EDF /* ImageProcessHelper.swift */; };
 		1682DE1222613830008B5100 /* CheckedItemsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682DE1122613830008B5100 /* CheckedItemsTextField.swift */; };
 		16C99DDF2270AF25005AC350 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 16C99DDE2270AF25005AC350 /* tessdata */; };
 		245FBFB921D711A0A3C55113 /* Pods_CheckedItemsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5DE7F3E473CA64F362270C7 /* Pods_CheckedItemsUITests.framework */; };
@@ -90,6 +91,7 @@
 		166EA69E22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedItemsLayoutConstraint.swift; sourceTree = "<group>"; };
 		166EA6A022652275001EE2EA /* ItemsListHeaderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsListHeaderTableView.swift; sourceTree = "<group>"; };
 		166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemsViewModel.swift; sourceTree = "<group>"; };
+		1670EC2722B836B800164EDF /* ImageProcessHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessHelper.swift; sourceTree = "<group>"; };
 		1682DE1122613830008B5100 /* CheckedItemsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedItemsTextField.swift; sourceTree = "<group>"; };
 		16C99DDE2270AF25005AC350 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		16FBA210A6FB5260C02BAAE1 /* Pods-CheckedItemsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItemsTests.release.xcconfig"; path = "Target Support Files/Pods-CheckedItemsTests/Pods-CheckedItemsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				163C897C2283E222005FB1E3 /* DateHelper.swift */,
+				1670EC2722B836B800164EDF /* ImageProcessHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16315713219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift in Sources */,
+				1670EC2822B836B800164EDF /* ImageProcessHelper.swift in Sources */,
 				166EA6A422652CBC001EE2EA /* CheckItemsViewModel.swift in Sources */,
 				1617BF9522726915003F6495 /* CGImagePropertyOrientation+Extention.swift in Sources */,
 				163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */,

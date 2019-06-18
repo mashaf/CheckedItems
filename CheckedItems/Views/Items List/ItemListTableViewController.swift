@@ -99,16 +99,20 @@ class ItemListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            guard let item = fetchedResultsController.object(at: indexPath) as? CheckedItems else {
-                fatalError("There are no object at \(indexPath) in the database")
-            }
-            CheckedItemsViewModel.deleteCheckedItem(item)
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard let item = fetchedResultsController.object(at: indexPath) as? CheckedItems else {
+            fatalError("There are no object at \(indexPath) in the database")
         }
+        let deleteRowAction = UITableViewRowAction(style: .default, title: "Delete", handler: {_, _ in
+            CheckedItemsViewModel.deleteCheckedItem(item)
+        })
+        let addRowAction = UITableViewRowAction(style: .normal, title: "Extend item", handler: {_, _ in
+            self.showAddItemScreen(for: item)
+        })
+        return [deleteRowAction, addRowAction]
     }
-
+    
     // MARK: Action methods
     @objc func addNewItem() {
         showAddItemScreen(for: nil)
@@ -128,6 +132,10 @@ class ItemListTableViewController: UITableViewController {
         }
         
         self.navigationController?.pushViewController(addItemViewController, animated: true)
+    }
+    
+    private func showExtendItemScreen(for item: CheckedItems) {
+        ///
     }
 }
 

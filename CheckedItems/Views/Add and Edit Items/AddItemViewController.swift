@@ -21,7 +21,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageOfItem: UIImageView!
     @IBOutlet weak var editImage: UIImageView!
-    @IBOutlet weak var countOfBoxes: CheckedItemsTextField!
+    @IBOutlet weak var countOfBoxesTextField: CheckedItemsTextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     let datePicker = UIDatePicker()
@@ -53,8 +53,9 @@ class AddItemViewController: UIViewController {
         startDateTextField.delegate = self
         startDateTextField.inputView = datePicker
         
-        countOfBoxes.dataFormat = .number
-        countOfBoxes.delegate = self
+        countOfBoxesTextField.dataFormat = .number
+        countOfBoxesTextField.delegate = self
+        countOfBoxesTextField.text = "1"
 
         if item != nil {
             nameTextField.text = item?.itemName
@@ -87,21 +88,14 @@ class AddItemViewController: UIViewController {
     }
 
     @IBAction func saveItem(_ sender: Any) {
+        
         do {
             
             try nameTextField.checkInputValueAndNull()
-            try countOfBoxes.checkInputValueAndNull()
+            try countOfBoxesTextField.checkInputValue()
             try dailyAmountTextField.checkInputValueAndNull()
             try startAmountTextField.checkInputValueAndNull()
             try startDateTextField.checkInputValueAndNull()
-            
-            if item == nil {
-                item = CheckItemViewModel()
-            }
-            
-            item?.saveVerifiedValues(name: nameTextField.text!, dailyAmount: dailyAmountTextField.text!, startAmount: startAmountTextField.text!, startDate: startDateTextField.text!, image: imageOfItem.image)
-            
-            closeWindow()
 
         } catch CheckedItemsTextFieldError.wrongNumberFormat(let fieldName) {
 
@@ -132,6 +126,50 @@ class AddItemViewController: UIViewController {
             showErrorMessage("Update data error : \(error) \(error.userInfo)")
             return
         }
+        
+        let theSameItems = CheckedItems.getItemByName(nameTextField.text!).filter {$0.finishDate!.compare(Date()) == .orderedDescending}
+        if item == nil && theSameItems.count > 0 {
+            
+            let theSameItem = theSameItems
+                .sorted {$0.finishDate!.compare($1.finishDate! as Date) == .orderedAscending}
+                .last
+            
+            guard theSameItem != nil else { return }
+            
+            let viewAlert = UIAlertController(title: theSameItem!.itemName, message: "The item is already added.\nDo you want to add the new item to it?", preferredStyle: .actionSheet)
+            
+            viewAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                self.addToItem(theSameItem!)
+            }))
+            
+            viewAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { _ in
+                self.saveItem()
+            }))
+            
+            viewAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(viewAlert, animated: true, completion: nil)
+            
+        } else {
+            saveItem()
+        }
+        
+    }
+    
+    private func addToItem(_ item: CheckedItems) {
+        self.item = CheckItemViewModel(item: item)
+        self.item?.addVerifiedValuesToItem(amount: startAmountTextField.text!, boxCount: countOfBoxesTextField.text)
+        closeWindow()
+    }
+    
+    private func saveItem() {
+        
+        if item == nil {
+            item = CheckItemViewModel()
+        }
+        
+        item?.saveVerifiedValues(name: nameTextField.text!, dailyAmount: dailyAmountTextField.text!, startAmount: startAmountTextField.text!, startDate: startDateTextField.text!, image: imageOfItem.image, boxCount: countOfBoxesTextField.text!) ///// TODO
+        
+        closeWindow()
     }
 
     @IBAction func imageButtonAction(_ sender: Any) {
