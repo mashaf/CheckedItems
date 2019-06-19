@@ -8,29 +8,103 @@
 
 import XCTest
 
+@testable import CheckedItems
+
+let firstItemName = "test item 1"
+let secondItemName = "test item 2"
+
+var application: XCUIApplication = XCUIApplication()
+var textFieldItemName = application/*@START_MENU_TOKEN@*/.textFields["Item's name"]/*[[".scrollViews.textFields[\"Item's name\"]",".textFields[\"Item's name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+var textFieldBoxesNumber = application/*@START_MENU_TOKEN@*/.textFields["Boxes"]/*[[".scrollViews.textFields[\"Boxes\"]",".textFields[\"Boxes\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+var textFieldDailyAmount = application.textFields["Daily amount"]
+var textFieldStartAmount = application/*@START_MENU_TOKEN@*/.textFields["Amount at the begining"]/*[[".scrollViews.textFields[\"Amount at the begining\"]",".textFields[\"Amount at the begining\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+var textFieldStartDate = application.textFields["Start date of consuming"]
+
 class CheckedItemsUITests: XCTestCase {
-        
+    
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        application.launch()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        addItem(firstItemName, boxes: "2", amount: "10", takePhoto: true)
+        addItem(secondItemName, boxes: "1", amount: "15", takePhoto: false)
+        addItem(firstItemName, boxes: "1", amount: "10", takePhoto: false)
+        editTheItem(secondItemName)
+        extendTheItem(secondItemName)
+        deleteItem(firstItemName)
+        deleteItem(secondItemName)
+        
+    }
+    
+    private func addItem(_ itemName: String, boxes: String, amount: String, takePhoto: Bool) {
+        
+        application.navigationBars["Navigation Controller"].buttons["Add"].tap()
+        
+        textFieldItemName.tap()
+        textFieldItemName.typeText(itemName)
+
+        textFieldBoxesNumber.tap()
+        application/*@START_MENU_TOKEN@*/.keys["Delete"]/*[[".keyboards.keys[\"Delete\"]",".keys[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        textFieldBoxesNumber.typeText(boxes)
+        
+        textFieldDailyAmount.tap()
+        application.keys["1"].tap()
+        
+        textFieldStartAmount.tap()
+        textFieldStartAmount.typeText(amount)
+        
+        if takePhoto {
+            application/*@START_MENU_TOKEN@*/.scrollViews.containing(.image, identifier: "camera").element/*[[".scrollViews.containing(.button, identifier:\"Save\").element",".scrollViews.containing(.textField, identifier:\"Start date of consuming\").element",".scrollViews.containing(.staticText, identifier:\"Start date of consuming:\").element",".scrollViews.containing(.textField, identifier:\"Amount at the begining\").element",".scrollViews.containing(.staticText, identifier:\"Amount at the begining:\").element",".scrollViews.containing(.textField, identifier:\"Daily amount\").element",".scrollViews.containing(.staticText, identifier:\"Daily amount:\").element",".scrollViews.containing(.textField, identifier:\"Boxes\").element",".scrollViews.containing(.textField, identifier:\"Item's name\").element",".scrollViews.containing(.staticText, identifier:\"Count of items:\").element",".scrollViews.containing(.staticText, identifier:\"Name of item:\").element",".scrollViews.containing(.image, identifier:\"camera\").element"],[[[-1,11],[-1,10],[-1,9],[-1,8],[-1,7],[-1,6],[-1,5],[-1,4],[-1,3],[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            application.scrollViews.children(matching: .button).element(boundBy: 0).tap()
+            XCUIDevice.shared.orientation = .landscapeLeft
+            application/*@START_MENU_TOKEN@*/.buttons["PhotoCapture"]/*[[".buttons[\"Take Picture\"]",".buttons[\"PhotoCapture\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            XCUIDevice.shared.orientation = .portrait
+            application.buttons["Use Photo"].tap()
+        }
+        
+        tapSaveButton()
+        
+        if application.sheets[itemName].exists {
+            application.sheets[itemName].buttons["Yes"].tap()
+        }
+    }
+    
+    private func extendTheItem(_ itemName: String) {
+        application.tables.staticTexts[itemName].swipeLeft()
+        application.tables.buttons["Extend item"].tap()
+        application.keys["1"].tap()
+        application.keys["0"].tap()
+        tapSaveButton()
+    }
+    
+    private func editTheItem(_ itemName: String) {
+        application.tables.staticTexts[itemName].tap()
+        textFieldStartAmount.tap()
+        application/*@START_MENU_TOKEN@*/.keys["Delete"]/*[[".keyboards.keys[\"Delete\"]",".keys[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        application/*@START_MENU_TOKEN@*/.keys["Delete"]/*[[".keyboards.keys[\"Delete\"]",".keys[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        textFieldStartAmount.typeText("18")
+        
+        tapSaveButton()
+    }
+    
+    private func deleteItem(_ itemName: String) {
+        application.tables.staticTexts[itemName].swipeLeft()
+        application.tables.buttons["Delete"].tap()
+    }
+    
+    private func tapSaveButton() {
+        if application.keyboards.count > 0 {
+            application/*@START_MENU_TOKEN@*/.staticTexts["Daily amount:"]/*[[".scrollViews.staticTexts[\"Daily amount:\"]",".staticTexts[\"Daily amount:\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        }
+        application/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".scrollViews.buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
     
 }
