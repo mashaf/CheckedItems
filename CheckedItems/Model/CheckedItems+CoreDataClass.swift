@@ -13,15 +13,6 @@ import CoreData
 @objc(CheckedItems)
 public class CheckedItems: NSManagedObject {
 
-    /*private static var sharedCheckedItems: CheckedItems = {
-        let checkedItems = CheckedItems()
-        return checkedItems
-    }()
-
-    static var shared: CheckedItems {
-        return sharedCheckedItems
-    }*/
-
     convenience init() {
         self.init(entity: CoreDataManager.instance.entityForName(entityName: "CheckedItems"),
                   insertInto: CoreDataManager.instance.managedObjectContext)

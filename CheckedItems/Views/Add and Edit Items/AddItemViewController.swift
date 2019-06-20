@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import TesseractOCR
-import Vision
 
-class AddItemViewController: UIViewController {
+class AddItemViewController: UIViewController, Instantiatable {
 
     enum EditItemModeType {
         case edit, add, extend
@@ -169,6 +167,10 @@ class AddItemViewController: UIViewController {
         
     }
     
+    private func showDuplicateItemAlert() {
+        
+    }
+    
     private func addToItem(_ item: CheckedItems) {
         if self.item == nil {
             self.item = CheckItemViewModel(item: item)
@@ -254,8 +256,7 @@ class AddItemViewController: UIViewController {
         if navigationController != nil {
             navigationController?.popViewController(animated: true)
         } else {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let itemListViewController = storyBoard.instantiateViewController(withIdentifier: "NavigationController")
+            let itemListViewController = NavigationController.instantiate()
             self.present(itemListViewController, animated: true, completion: nil)
         }
     }
@@ -263,7 +264,7 @@ class AddItemViewController: UIViewController {
     // MARK: text recognition methods
     private func startRecognizeText(from image: UIImage) {
 
-        let str = extractTextFrom(image: image.scaleImage(640)!)
+        let str = ImageProcessHelper().extractTextFrom(image: image.scaleImage(640)!)
         self.imageOfItem.image = image
         /*
         //let cgImageOrientation = CGImagePropertyOrientation(image.imageOrientation)
@@ -294,72 +295,6 @@ class AddItemViewController: UIViewController {
         activityIndicator.stopAnimating()
         activityIndicator.alpha = 0
 
-    }
-
-    private func handleDetectedRectangles(originImage: UIImage, request: VNRequest) {
-        DispatchQueue.main.async {
-            guard let results = request.results as? [VNTextObservation] else {
-                fatalError("Wrong results of Detect Rectangles Request")
-            }
-            let markedImage = self.drawRectForDetectingText(image: originImage, results: results)
-            for img in self.textImages {
-                let aaaaa = self.extractTextFrom(image: img)
-                print("text is \(String(describing: aaaaa))")
-            }
-            self.imageOfItem.image = markedImage
-        }
-    }
-
-    private func drawRectForDetectingText(image: UIImage, results: [VNTextObservation] ) -> UIImage? {
-
-        UIGraphicsBeginImageContext(image.size)
-
-        image.draw(at: CGPoint.zero)
-        //image.draw(in: CGRect(x:0, y:0, width: image.size.width, height: image.size.height))
-
-        let context = UIGraphicsGetCurrentContext()!
-
-        //let ciImage = CIImage(image:image)
-        let  transform = CGAffineTransform.identity.scaledBy(x: image.size.width, y: image.size.height)
-        //(x: ciImage!.extent.size.width, y: ciImage!.extent.size.height)
-
-        //transform.translatedBy(x: 0, y: -1)
-
-        for item in results {
-            context.setFillColor(UIColor.clear.cgColor)
-            context.setStrokeColor(UIColor.red.cgColor)
-            context.setLineWidth(2.0)
-            context.addRect(item.boundingBox.applying(transform))
-            context.drawPath(using: .fillStroke)
-            addScreenshotOfDetectingText(sourceImage: image, boundingBox: item.boundingBox.applying(transform))
-        }
-
-        let markedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return markedImage
-    }
-
-    private var textImages = [UIImage]()
-    private func addScreenshotOfDetectingText(sourceImage image: UIImage, boundingBox: CGRect) {
-        let pct: CGFloat = 0.1
-        let newRect = boundingBox.insetBy(dx: -boundingBox.width*pct/2, dy: -boundingBox.height*pct/2)
-        let imageRef = image.cgImage?.cropping(to: newRect)
-        let croppedImage = UIImage(cgImage: imageRef!, scale: image.scale, orientation: image.imageOrientation)
-        textImages.append(croppedImage)
-    }
-
-    private func extractTextFrom(image: UIImage) -> String {
-        var string: String = ""
-        if let tesseract = G8Tesseract(language: "eng+rus") {
-            tesseract.engineMode =  .tesseractOnly
-            tesseract.pageSegmentationMode = .auto
-            tesseract.image = image//.g8_blackAndWhite()
-            tesseract.recognize()
-            string = tesseract.recognizedText ?? ""
-            print("image: \(image),  tesseract: " + string)
-        }
-        return string
     }
 }
 

@@ -16,16 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var rootViewControllerId: String
-
-        if CheckedItems.itemsCount() == 0 {
-            rootViewControllerId = "AddItemViewController"
-        } else {
-            rootViewControllerId = "NavigationController"
-        }
-
-        let rootViewController = storyBoard.instantiateViewController(withIdentifier: rootViewControllerId)
+        let rootViewController = CheckedItems.itemsCount() == 0 ? AddItemViewController.instantiate() : NavigationController.instantiate()
         window?.rootViewController = rootViewController
 
         return true

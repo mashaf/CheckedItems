@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ItemListTableViewController: UITableViewController {
+class ItemListTableViewController: UITableViewController, Instantiatable {
 
     lazy var fetchedResultsController: NSFetchedResultsController = CheckedItems.getFetchedResultsController()
 
@@ -119,28 +119,17 @@ class ItemListTableViewController: UITableViewController {
     }
 
     // MARK: private methods
-    private func getAddItemViewController() -> AddItemViewController {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let addItemVCId = "AddItemViewController"
-        
-        guard let addItemViewController = storyBoard.instantiateViewController(withIdentifier: addItemVCId) as? AddItemViewController else {
-            fatalError("No view controller with id \(addItemVCId)")
-        }
-        return addItemViewController
-    }
-    
     private func showAddItemScreen(for item: CheckedItems?) {
-        let addItemViewController  = getAddItemViewController()
+        let addItemViewController  = AddItemViewController.instantiate()
         
         if item != nil {
             addItemViewController.item = CheckItemViewModel(item: item!)
         }
-        
         self.navigationController?.pushViewController(addItemViewController, animated: true)
     }
     
     private func showExtendItemScreen(for item: CheckedItems) {
-        let addItemViewController  = getAddItemViewController()
+        let addItemViewController  =  AddItemViewController.instantiate()
         addItemViewController.item = CheckItemViewModel(item: item)
         addItemViewController.mode = .extend
         

@@ -24,6 +24,7 @@
 		1631571E219F19D800ADCAC4 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631571D219F19D800ADCAC4 /* ItemTableViewCell.swift */; };
 		16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */; };
 		16315729219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */; };
+		1631D78522BBE86A0031A0C0 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631D78422BBE86A0031A0C0 /* NavigationController.swift */; };
 		163C89772283A582005FB1E3 /* CheckItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C89762283A582005FB1E3 /* CheckItemViewModel.swift */; };
 		163C897D2283E222005FB1E3 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C897C2283E222005FB1E3 /* DateHelper.swift */; };
 		16418A072270A34F00CA33C2 /* Pods_CheckedItems.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16418A062270A34F00CA33C2 /* Pods_CheckedItems.framework */; };
@@ -34,6 +35,7 @@
 		166EA6A122652275001EE2EA /* ItemsListHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA6A022652275001EE2EA /* ItemsListHeaderTableView.swift */; };
 		166EA6A422652CBC001EE2EA /* CheckItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */; };
 		1670EC2822B836B800164EDF /* ImageProcessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670EC2722B836B800164EDF /* ImageProcessHelper.swift */; };
+		167D875F22BBD97F00DD17D8 /* Instantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D875E22BBD97F00DD17D8 /* Instantiatable.swift */; };
 		1682DE1222613830008B5100 /* CheckedItemsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682DE1122613830008B5100 /* CheckedItemsTextField.swift */; };
 		16C99DDF2270AF25005AC350 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 16C99DDE2270AF25005AC350 /* tessdata */; };
 		245FBFB921D711A0A3C55113 /* Pods_CheckedItemsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5DE7F3E473CA64F362270C7 /* Pods_CheckedItemsUITests.framework */; };
@@ -82,6 +84,7 @@
 		1631571D219F19D800ADCAC4 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		16315720219F1DC200ADCAC4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		16315727219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1631D78422BBE86A0031A0C0 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		163C89762283A582005FB1E3 /* CheckItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemViewModel.swift; sourceTree = "<group>"; };
 		163C897C2283E222005FB1E3 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		16418A062270A34F00CA33C2 /* Pods_CheckedItems.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CheckedItems.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +95,7 @@
 		166EA6A022652275001EE2EA /* ItemsListHeaderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsListHeaderTableView.swift; sourceTree = "<group>"; };
 		166EA6A322652CBC001EE2EA /* CheckItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemsViewModel.swift; sourceTree = "<group>"; };
 		1670EC2722B836B800164EDF /* ImageProcessHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessHelper.swift; sourceTree = "<group>"; };
+		167D875E22BBD97F00DD17D8 /* Instantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instantiatable.swift; sourceTree = "<group>"; };
 		1682DE1122613830008B5100 /* CheckedItemsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedItemsTextField.swift; sourceTree = "<group>"; };
 		16C99DDE2270AF25005AC350 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		16FBA210A6FB5260C02BAAE1 /* Pods-CheckedItemsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItemsTests.release.xcconfig"; path = "Target Support Files/Pods-CheckedItemsTests/Pods-CheckedItemsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				163156DE219EC7CE00ADCAC4 /* LaunchScreen.storyboard */,
 				1631570F219ED4FE00ADCAC4 /* Items List */,
 				1631570E219ED4E200ADCAC4 /* Add and Edit Items */,
+				1631D78422BBE86A0031A0C0 /* NavigationController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 			children = (
 				163C897C2283E222005FB1E3 /* DateHelper.swift */,
 				1670EC2722B836B800164EDF /* ImageProcessHelper.swift */,
+				167D875E22BBD97F00DD17D8 /* Instantiatable.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				163156E2219EC7CE00ADCAC4 /* Sources */,
 				163156E3219EC7CE00ADCAC4 /* Frameworks */,
 				163156E4219EC7CE00ADCAC4 /* Resources */,
+				76C08581F9B89FDAB0C62373 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -345,6 +352,7 @@
 				163156ED219EC7CE00ADCAC4 /* Sources */,
 				163156EE219EC7CE00ADCAC4 /* Frameworks */,
 				163156EF219EC7CE00ADCAC4 /* Resources */,
+				D38115D4F9432EC14C46CA6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -473,6 +481,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheckedItems/Pods-CheckedItems-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		76C08581F9B89FDAB0C62373 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheckedItemsTests/Pods-CheckedItemsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheckedItemsTests/Pods-CheckedItemsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CFDC6EFA7E95467BA359AB61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,6 +523,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D38115D4F9432EC14C46CA6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheckedItemsUITests/Pods-CheckedItemsUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheckedItemsUITests/Pods-CheckedItemsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E2FD9B772389961C1F044643 /* [CP] Check Pods Manifest.lock */ = {
@@ -562,6 +614,8 @@
 				16315729219F245C00ADCAC4 /* CheckedItems+CoreDataProperties.swift in Sources */,
 				163C89772283A582005FB1E3 /* CheckItemViewModel.swift in Sources */,
 				1631570A219ECDF200ADCAC4 /* AddItemViewController.swift in Sources */,
+				167D875F22BBD97F00DD17D8 /* Instantiatable.swift in Sources */,
+				1631D78522BBE86A0031A0C0 /* NavigationController.swift in Sources */,
 				166EA69F22651AEF001EE2EA /* CheckedItemsLayoutConstraint.swift in Sources */,
 				166EA6A122652275001EE2EA /* ItemsListHeaderTableView.swift in Sources */,
 			);
@@ -669,7 +723,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -723,7 +777,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -736,6 +790,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98969CE5264D25AE2D887206 /* Pods-CheckedItems.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47T6UU3P43;
@@ -757,6 +812,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 06B35E4C476BA0BBB5552F55 /* Pods-CheckedItems.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47T6UU3P43;
@@ -783,6 +839,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47T6UU3P43;
 				INFOPLIST_FILE = CheckedItemsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -805,6 +862,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47T6UU3P43;
 				INFOPLIST_FILE = CheckedItemsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -826,6 +884,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47T6UU3P43;
 				INFOPLIST_FILE = CheckedItemsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -847,6 +906,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47T6UU3P43;
 				INFOPLIST_FILE = CheckedItemsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
