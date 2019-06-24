@@ -264,37 +264,42 @@ class AddItemViewController: UIViewController, Instantiatable {
     // MARK: text recognition methods
     private func startRecognizeText(from image: UIImage) {
 
-        let str = ImageProcessHelper().extractTextFrom(image: image.scaleImage(640)!)
-        self.imageOfItem.image = image
-        /*
-        //let cgImageOrientation = CGImagePropertyOrientation(image.imageOrientation)
-        let handler = VNImageRequestHandler(cgImage: image.cgImage!, orientation: .downMirrored, options: [VNImageOption : Any]())
-        //let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [VNImageOption : Any]())
-        
-        let request = VNDetectTextRectanglesRequest { (request, error) in
-            if error != nil {
-                DispatchQueue.main.async {
-                    self.imageOfItem.image = image
-                }
-                print("\nText recognition Error: \(error?.localizedDescription)\n")
-            } else {
-                self.handleDetectedRectangles(originImage: image, request: request)
-            }
-        }
-        request.reportCharacterBoxes = true
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                try handler.perform([request])
-            } catch let error as NSError {
-                print("Failed to perform image request: \(error)")
-                return
-            }
-        } */
-
+        let imageProcesser = ImageProcessHelper()
+        imageProcesser.delegate = self
+        imageProcesser.processImage(image) //extractTextFrom(image: image) //
+       
         activityIndicator.stopAnimating()
         activityIndicator.alpha = 0
 
+    }
+}
+
+extension AddItemViewController: ImageProcessHelperDelegate {
+    
+    func updateView(data: RecognizedDataType?, markedImage: UIImage?) {
+        guard let data = data else { return }
+        self.imageOfItem.image = markedImage
+        let probItemNames = data
+            .keys
+            .filter({ !$0.isEmpty && data[$0] != nil })
+            .sorted { (text1, text2) -> Bool in
+                return Float(data[text1]!.size.height) > Float(data[text2]!.size.height)// probably it could be the highest font size
+            }
+            .map({$0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)})
+        
+        guard probItemNames.count > 0 else {return}
+        
+        let viewAlert = UIAlertController(title: "CHOOSE THE ITEM NAME", message: "We extract some probable names of item from your image. Use one of them to name the item?", preferredStyle: .actionSheet)
+        
+        let maxCountOfProbNames = probItemNames.count > 4 ? 4 : probItemNames.count
+        for word in probItemNames[0...maxCountOfProbNames-1] {
+            viewAlert.addAction(UIAlertAction(title: word, style: .default, handler: { _ in
+                self.nameTextField.text = word
+            }))
+        }
+        
+        viewAlert.addAction(UIAlertAction(title: "Don't use all of them", style: .cancel, handler: nil))
+        self.present(viewAlert, animated: true, completion: nil)
     }
 }
 
@@ -320,16 +325,14 @@ extension AddItemViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
 
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage { //,
-            //let scaledImage = image.scaleImage(640) {
-
-            activityIndicator.alpha = 1
-            activityIndicator.startAnimating()
-
-            //imageOfItem.image = image
             editImage.alpha = 1
             takenImage = true
 
             picker.dismiss(animated: true, completion: {
+                
+                self.activityIndicator.alpha = 1
+                self.activityIndicator.startAnimating()
+
                 self.startRecognizeText(from: image)
             })
         }
