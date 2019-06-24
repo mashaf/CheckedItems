@@ -15,7 +15,7 @@ public typealias CheckedItemAmountDataType = Int16
 extension CheckedItems {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CheckedItems> {
-        return NSFetchRequest<CheckedItems>(entityName: "CheckedItems")
+        return NSFetchRequest<CheckedItems>(entityName: String(describing: self))
     }
 
     @NSManaged public var id: CheckedItemAmountDataType

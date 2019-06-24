@@ -14,14 +14,14 @@ import CoreData
 public class CheckedItems: NSManagedObject {
 
     convenience init() {
-        self.init(entity: CoreDataManager.instance.entityForName(entityName: "CheckedItems"),
+        self.init(entity: CoreDataManager.instance.entityForName(entityName: String(describing: type(of: self))),
                   insertInto: CoreDataManager.instance.managedObjectContext)
     }
 
     private static var managedObjectContext = CoreDataManager.instance.managedObjectContext
     
     private static func createNewFetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CheckedItems")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: self))
         request.returnsObjectsAsFaults = false
         let sortDescriptorNum = NSSortDescriptor(key: "finishDate", ascending: true)
         request.sortDescriptors = [sortDescriptorNum]
