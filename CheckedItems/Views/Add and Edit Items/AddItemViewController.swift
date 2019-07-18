@@ -139,26 +139,7 @@ class AddItemViewController: UIViewController, Instantiatable {
         
         let theSameItems = CheckedItems.getItemByName(nameTextField.text!).filter {$0.finishDate!.compare(Date()) == .orderedDescending}
         if item == nil && theSameItems.count > 0 {
-            
-            let theSameItem = theSameItems
-                .sorted {$0.finishDate!.compare($1.finishDate! as Date) == .orderedAscending}
-                .last
-            
-            guard theSameItem != nil else { return }
-            
-            let viewAlert = UIAlertController(title: theSameItem!.itemName, message: "The item is already added.\nDo you want to add the new item to it?", preferredStyle: .actionSheet)
-            
-            viewAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-                self.addToItem(theSameItem!)
-            }))
-            
-            viewAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { _ in
-                self.saveItem()
-            }))
-            
-            viewAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(viewAlert, animated: true, completion: nil)
-            
+            showDuplicateItemAlert(theSameItems)
         } else if mode == .extend {
             self.addToItem(self.item!.item)
         } else {
@@ -167,8 +148,25 @@ class AddItemViewController: UIViewController, Instantiatable {
         
     }
     
-    private func showDuplicateItemAlert() {
+    private func showDuplicateItemAlert(_ items: [CheckedItems]) {
+        let theSameItem = items
+            .sorted {$0.finishDate!.compare($1.finishDate! as Date) == .orderedAscending}
+            .last
         
+        guard theSameItem != nil else { return }
+        
+        let viewAlert = UIAlertController(title: theSameItem!.itemName, message: "The item is already added.\nDo you want to add the new item to it?", preferredStyle: .actionSheet)
+        
+        viewAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            self.addToItem(theSameItem!)
+        }))
+        
+        viewAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { _ in
+            self.saveItem()
+        }))
+        
+        viewAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(viewAlert, animated: true, completion: nil)
     }
     
     private func addToItem(_ item: CheckedItems) {

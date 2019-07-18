@@ -9,23 +9,11 @@
 import UIKit
 
 struct CheckedItemsViewModel {
-
-    var dailyAmount: String
-    var itemName: String
-    var startAmount: String
-    var startDate: String
-    var finishDate: String
-    var restAmount: String
-    var spentAmount: String
-    var image: UIImage
     
-    //init(item:CheckedItems) {
-    //    return self
-    //}
+    // placeholder for working with list of items
     
-    static func deleteCheckedItem(_ item: CheckedItems) {
+    static func deleteItem(_ item: CheckedItems) {
         CoreDataManager.instance.managedObjectContext.delete(item)
         CoreDataManager.instance.saveContext()
     }
-    
 }

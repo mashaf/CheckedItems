@@ -105,7 +105,7 @@ class ItemListTableViewController: UITableViewController, Instantiatable {
             fatalError("There are no object at \(indexPath) in the database")
         }
         let deleteRowAction = UITableViewRowAction(style: .default, title: "Delete", handler: {_, _ in
-            CheckedItemsViewModel.deleteCheckedItem(item)
+            CheckedItemsViewModel.deleteItem(item)
         })
         let addRowAction = UITableViewRowAction(style: .normal, title: "Extend item", handler: {_, _ in
             self.showExtendItemScreen(for: item)
