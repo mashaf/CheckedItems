@@ -55,4 +55,19 @@ public class CheckedItems: NSManagedObject {
         return result!
     }
     
+    static func getRunOutSoonItemsList() -> [CheckedItems] {
+        let request = createNewFetchRequest()
+        
+        let date = NSDate()
+        let runOutDate = DateHelper.getDateFor(date, since: 100) ?? date // 10
+        request.predicate = NSPredicate(format: "finishDate <= %@", runOutDate as CVarArg)
+        let sortDescriptor = NSSortDescriptor(key: "finishDate", ascending: true)
+        request.sortDescriptors?.insert(sortDescriptor, at: 0)
+        
+        guard let result = try? CoreDataManager.instance.managedObjectContext.fetch(request) as? [CheckedItems] else {
+            return []
+        }
+        
+        return result!
+    }
 }

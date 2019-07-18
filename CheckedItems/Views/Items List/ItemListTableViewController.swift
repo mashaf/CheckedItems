@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ItemListTableViewController: UITableViewController, Instantiatable {
+class ItemListTableViewController: UITableViewController, Instantiatable, NotificationProtocol {
 
     lazy var fetchedResultsController: NSFetchedResultsController = CheckedItems.getFetchedResultsController()
 
@@ -46,6 +46,11 @@ class ItemListTableViewController: UITableViewController, Instantiatable {
         tableView.reloadData()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        clearNotifications()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

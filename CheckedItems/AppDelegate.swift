@@ -8,17 +8,19 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let rootViewController = CheckedItems.itemsCount() == 0 ? AddItemViewController.instantiate() : NavigationController.instantiate()
         window?.rootViewController = rootViewController
-
+        
+        NotificationController.shared().schedule()
         return true
     }
 
@@ -48,4 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.saveContext()
     }
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        completionHandler(UIBackgroundFetchResult.noData)
+    }
 }
