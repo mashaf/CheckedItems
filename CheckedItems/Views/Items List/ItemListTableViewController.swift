@@ -39,16 +39,20 @@ class ItemListTableViewController: UITableViewController, Instantiatable, Notifi
 
         let addNewItemButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewItem))
         self.navigationItem.rightBarButtonItem = addNewItemButton
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(clearNotificationBadge), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
+    @objc private func clearNotificationBadge() {
+        clearNotifications()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        clearNotifications()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

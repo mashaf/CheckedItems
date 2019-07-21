@@ -61,10 +61,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		16116F2A22E1236900FA34BC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		06B35E4C476BA0BBB5552F55 /* Pods-CheckedItems.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItems.release.xcconfig"; path = "Target Support Files/Pods-CheckedItems/Pods-CheckedItems.release.xcconfig"; sourceTree = "<group>"; };
 		16116F1022E0D99800FA34BC /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		16116F1122E0D99900FA34BC /* NotificationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationProtocol.swift; sourceTree = "<group>"; };
+		16116F1922E1236900FA34BC /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		16116F1B22E1236900FA34BC /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		1617BF9322726915003F6495 /* CGImagePropertyOrientation+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+Extention.swift"; sourceTree = "<group>"; };
 		1617BF9422726915003F6495 /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
 		163156CF219EC7CA00ADCAC4 /* CheckedItems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckedItems.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +295,8 @@
 				16418A082270A34F00CA33C2 /* TesseractOCR.framework */,
 				F8FCEA9D134DC3175413F5C5 /* Pods_CheckedItemsTests.framework */,
 				F5DE7F3E473CA64F362270C7 /* Pods_CheckedItemsUITests.framework */,
+				16116F1922E1236900FA34BC /* UserNotifications.framework */,
+				16116F1B22E1236900FA34BC /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -328,6 +345,7 @@
 				163156CD219EC7CA00ADCAC4 /* Resources */,
 				6EE5B23871C42627B58219F4 /* [CP] Embed Pods Frameworks */,
 				16C99DE122710B7D005AC350 /* ShellScript */,
+				16116F2A22E1236900FA34BC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -384,7 +402,7 @@
 		163156C7219EC7CA00ADCAC4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Jesse Flores";
 				TargetAttributes = {

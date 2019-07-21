@@ -28,12 +28,12 @@ public class CheckedItems: NSManagedObject {
         return request
     }
 
-    static func itemsCount() -> Int {
+    static func allItems() -> [CheckedItems]? {
         let request = createNewFetchRequest()
         guard let result = try? managedObjectContext.fetch(request) as? [CheckedItems] else {
             fatalError("No items in entity")
         }
-        return result!.count
+        return result
     }
 
     static func getFetchedResultsController() -> NSFetchedResultsController<NSFetchRequestResult> {
@@ -55,7 +55,7 @@ public class CheckedItems: NSManagedObject {
         return result!
     }
     
-    static func getRunOutSoonItemsList() -> [CheckedItems] {
+    static func getRunOutSoonItemsList() -> [CheckedItems]? {
         let request = createNewFetchRequest()
         
         let date = NSDate()
@@ -68,6 +68,6 @@ public class CheckedItems: NSManagedObject {
             return []
         }
         
-        return result!
+        return result
     }
 }
