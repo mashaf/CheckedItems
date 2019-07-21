@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16116F1222E0D99900FA34BC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16116F1022E0D99800FA34BC /* NotificationController.swift */; };
+		16116F1322E0D99900FA34BC /* NotificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16116F1122E0D99900FA34BC /* NotificationProtocol.swift */; };
 		1617BF9522726915003F6495 /* CGImagePropertyOrientation+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BF9322726915003F6495 /* CGImagePropertyOrientation+Extention.swift */; };
 		1617BF9622726915003F6495 /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617BF9422726915003F6495 /* UIImage+Extentions.swift */; };
 		163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */; };
@@ -59,8 +61,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		16116F2A22E1236900FA34BC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		06B35E4C476BA0BBB5552F55 /* Pods-CheckedItems.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckedItems.release.xcconfig"; path = "Target Support Files/Pods-CheckedItems/Pods-CheckedItems.release.xcconfig"; sourceTree = "<group>"; };
+		16116F1022E0D99800FA34BC /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		16116F1122E0D99900FA34BC /* NotificationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationProtocol.swift; sourceTree = "<group>"; };
+		16116F1922E1236900FA34BC /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		16116F1B22E1236900FA34BC /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		1617BF9322726915003F6495 /* CGImagePropertyOrientation+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+Extention.swift"; sourceTree = "<group>"; };
 		1617BF9422726915003F6495 /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
 		163156CF219EC7CA00ADCAC4 /* CheckedItems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckedItems.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16116F0F22E0D96700FA34BC /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				16116F1022E0D99800FA34BC /* NotificationController.swift */,
+				16116F1122E0D99900FA34BC /* NotificationProtocol.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		163156C6219EC7CA00ADCAC4 = {
 			isa = PBXGroup;
 			children = (
@@ -163,9 +191,10 @@
 		163156D1219EC7CA00ADCAC4 /* CheckedItems */ = {
 			isa = PBXGroup;
 			children = (
+				163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */,
+				16116F0F22E0D96700FA34BC /* Notifications */,
 				163C89792283C50E005FB1E3 /* Helper */,
 				16C99DDE2270AF25005AC350 /* tessdata */,
-				163156D2219EC7CA00ADCAC4 /* AppDelegate.swift */,
 				163156E1219EC7CE00ADCAC4 /* Info.plist */,
 				1631571F219F1DAA00ADCAC4 /* Extentions */,
 				1682DE1322613836008B5100 /* Controls */,
@@ -266,6 +295,8 @@
 				16418A082270A34F00CA33C2 /* TesseractOCR.framework */,
 				F8FCEA9D134DC3175413F5C5 /* Pods_CheckedItemsTests.framework */,
 				F5DE7F3E473CA64F362270C7 /* Pods_CheckedItemsUITests.framework */,
+				16116F1922E1236900FA34BC /* UserNotifications.framework */,
+				16116F1B22E1236900FA34BC /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,6 +345,7 @@
 				163156CD219EC7CA00ADCAC4 /* Resources */,
 				6EE5B23871C42627B58219F4 /* [CP] Embed Pods Frameworks */,
 				16C99DE122710B7D005AC350 /* ShellScript */,
+				16116F2A22E1236900FA34BC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -370,7 +402,7 @@
 		163156C7219EC7CA00ADCAC4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Jesse Flores";
 				TargetAttributes = {
@@ -601,10 +633,12 @@
 				16315713219ED68900ADCAC4 /* CheckedItems+CoreDataClass.swift in Sources */,
 				1670EC2822B836B800164EDF /* ImageProcessHelper.swift in Sources */,
 				166EA6A422652CBC001EE2EA /* CheckItemsViewModel.swift in Sources */,
+				16116F1222E0D99900FA34BC /* NotificationController.swift in Sources */,
 				1617BF9522726915003F6495 /* CGImagePropertyOrientation+Extention.swift in Sources */,
 				163156D3219EC7CA00ADCAC4 /* AppDelegate.swift in Sources */,
 				1617BF9622726915003F6495 /* UIImage+Extentions.swift in Sources */,
 				163156DB219EC7CA00ADCAC4 /* CheckedItems.xcdatamodeld in Sources */,
+				16116F1322E0D99900FA34BC /* NotificationProtocol.swift in Sources */,
 				16315721219F1DC200ADCAC4 /* UIViewController+Extensions.swift in Sources */,
 				1631571E219F19D800ADCAC4 /* ItemTableViewCell.swift in Sources */,
 				1682DE1222613830008B5100 /* CheckedItemsTextField.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ItemListTableViewController: UITableViewController, Instantiatable {
+class ItemListTableViewController: UITableViewController, Instantiatable, NotificationProtocol {
 
     lazy var fetchedResultsController: NSFetchedResultsController = CheckedItems.getFetchedResultsController()
 
@@ -39,13 +39,22 @@ class ItemListTableViewController: UITableViewController, Instantiatable {
 
         let addNewItemButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewItem))
         self.navigationItem.rightBarButtonItem = addNewItemButton
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(clearNotificationBadge), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
+    @objc private func clearNotificationBadge() {
+        clearNotifications()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
